@@ -1,10 +1,12 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  helper :all
+  protect_from_forgery
 
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  filter_parameter_logging :password
+  
+  protected
+  def render_optional_error_file(status_code)
+    status = interpret_status(status_code)
+    render :template => "/errors/#{status[0,3]}.html.erb", :status => status, :layout => 'application.html.erb'
+  end
 end
