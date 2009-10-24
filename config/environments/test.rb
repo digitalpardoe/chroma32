@@ -13,3 +13,4 @@ config.action_mailer.delivery_method = :test
 config.gem 'ruby-prof', :lib => false, :version => '>= 0.7.0'
 config.gem 'rspec', :lib => false, :version => '>= 1.2.5'
 config.gem 'rspec-rails', :lib => false, :version => '>= 1.2.5'
+config.gem 'sqlite3-ruby', :lib => 'sqlite3', :version => '>= 1.2.0'
