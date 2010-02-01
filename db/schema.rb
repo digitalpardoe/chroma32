@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100201134912) do
+ActiveRecord::Schema.define(:version => 20100201200322) do
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20100201134912) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "roles_mask"
   end
 
 end

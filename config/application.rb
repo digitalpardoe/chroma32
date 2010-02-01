@@ -32,7 +32,7 @@ module Chroma32
     # end
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters << :password
+    config.filter_parameters << [:password, :password_confirmation]
     
     config.after_initialize do
       Bundler.require_env
