@@ -22,10 +22,12 @@ source = "http://gemcutter.org"
 
 ## Bundle gems required to use Edge Rails
 
-gem "arel", "0.2.pre", :git => "git://github.com/rails/arel.git"
-gem "rack", "1.1.0", :git => "git://github.com/rails/rack.git"
-gem "rails", "3.0.pre", :git => "git://github.com/rails/rails.git"
+gem "arel", ">= 0.2.0", :git => "git://github.com/rails/arel.git"
+gem "rack", ">= 1.1.0", :git => "git://github.com/rails/rack.git"
+gem "rails", ">= 3.0.pre", :git => "git://github.com/rails/rails.git"
 
 ## Bundle all other application gems
 
 gem "sqlite3-ruby"
+gem "authlogic", ">= 2.1.3", :git => "git://github.com/binarylogic/authlogic.git"
+gem "cancan"

@@ -12,6 +12,8 @@ Chroma32::Application.routes.draw do |map|
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources :users
+  resources :user_sessions, :only => [:new, :create, :destroy]
 
   # Sample resource route with options:
   #   resources :products do
