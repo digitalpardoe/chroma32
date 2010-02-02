@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   acts_as_authentic
   
-  named_scope :with_role, lambda { |role| {:conditions => "role_mask & #{2**ROLES.index(role.to_s)} > 0"} }
+  scope :with_role, lambda { |role| {:conditions => "role_mask & #{2**ROLES.index(role.to_s)} > 0"} }
   
   # This is the hash of available roles, not stored the the database (what's the point),
   # always add new roles to the end of this list or it could go horribly wrong
