@@ -1,9 +1,9 @@
 class UserSessionsController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /user_sessions/new
   # GET /user_sessions/new.xml
   def new
-    @user_session = UserSession.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user_session }
@@ -13,8 +13,6 @@ class UserSessionsController < ApplicationController
   # POST /user_sessions
   # POST /user_sessions.xml
   def create
-    @user_session = UserSession.new(params[:user_session])
-
     respond_to do |format|
       if @user_session.save
         format.html { redirect_to(@user_session, :notice => 'UserSession was successfully created.') }
@@ -29,7 +27,6 @@ class UserSessionsController < ApplicationController
   # DELETE /user_sessions/1
   # DELETE /user_sessions/1.xml
   def destroy
-    @user_session = UserSession.find(params[:id])
     @user_session.destroy
 
     respond_to do |format|
