@@ -9,7 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100201200322) do
+ActiveRecord::Schema.define(:version => 20100203153232) do
+
+  create_table "catalogs", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "catalog_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "documents", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "extension"
+    t.integer  "size",       :null => false
+    t.integer  "catalog_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
