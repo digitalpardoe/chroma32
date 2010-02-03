@@ -18,10 +18,10 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    @user_session.destroy
+    current_user_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to(user_sessions_url) }
+      format.html { redirect_to(root_url) }
     end
   end
 end
