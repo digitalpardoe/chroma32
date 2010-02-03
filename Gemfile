@@ -18,7 +18,7 @@
 ## end
 
 ## New source as a lot of gems are now hosted elsewhere
-source :gemcutter
+source = "http://gemcutter.org"
 
 ## Bundle gems required to use Edge Rails
 
