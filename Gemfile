@@ -18,7 +18,7 @@
 ## end
 
 ## New source as a lot of gems are now hosted elsewhere
-source :gemcutter
+source = :gemcutter
 
 ## Bundle gems required to use Edge Rails
 
@@ -29,5 +29,5 @@ gem "rails", ">= 3.0.pre", :git => "git://github.com/rails/rails.git"
 ## Bundle all other application gems
 
 gem "sqlite3-ruby"
-gem "authlogic", ">= 2.1.3", :git => "git://github.com/binarylogic/authlogic.git"
+gem "authlogic", ">= 2.1.3", :git => "git://github.com/digitalpardoe/authlogic.git"
 gem "cancan"
