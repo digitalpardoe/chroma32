@@ -3,4 +3,5 @@ log/*.log
 tmp/**/*
 config/database.yml
 .DS_Store
-vendor/environment.rb
+bin/*
+vendor/gems/*
