@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
   def create
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_to(@user_session, :notice => 'UserSession was successfully created.') }
+        format.html { redirect_to(root_url, :notice => 'UserSession was successfully created.') }
       else
         format.html { render :action => "new" }
       end
