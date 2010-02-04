@@ -35,7 +35,7 @@ module Chroma32
     config.filter_parameters << [:password, :password_confirmation]
     
     config.after_initialize do
-      Bundler.require_env
+      Bundler.require
     end
   end
 end
