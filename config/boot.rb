@@ -17,7 +17,7 @@ rescue LoadError
 end
 
 # Auto-require all bundled libraries.
-#Bundler.require
+# Bundler.require
 
 require 'rails/all'
 
