@@ -5,17 +5,17 @@
 	<meta charset="utf-8" />
 	<title>Chroma32</title>
 	<%= stylesheet_link_tag :all %>
-	<%= javascript_include_tag :all %>
+	<%= javascript_include_tag :defaults %>
+	<%= csrf_meta_tag %>
 </head>
 
 <body>
   <% if !current_user %>
     <%= link_to "Register", new_user_path %> |
-    <%= link_to "Log In", new_user_session_path %> |
+    <%= link_to "Log In", new_user_session_path %>
   <% else %>
     <%= link_to "My Account", user_path(current_user) %> |
-    <!-- The button is somewhat annoying, need to see if a fix comes in the way of a non-remote 'link_to' -->
-    <%= button_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+    <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
   <% end %>
   
   <% flash.each do |key, msg| %>
