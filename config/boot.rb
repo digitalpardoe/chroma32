@@ -15,20 +15,3 @@ rescue LoadError
   #
   # require 'rubygems'
 end
-
-# Auto-require all bundled libraries.
-# Bundler.require
-
-require 'rails/all'
-
-# To pick the frameworks you want, remove 'require "rails/all"'
-# and list the framework railties that you want:
-#
-# require "active_support/railtie"
-# require "active_model/railtie"
-# require "active_record/railtie"
-# require "action_controller/railtie"
-# require "action_view/railtie"
-# require "action_mailer/railtie"
-# require "active_resource/railtie"
-# require "rails/test_unit/railtie"
