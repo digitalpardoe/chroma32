@@ -8,9 +8,11 @@ development:
   host: 127.0.0.1
 
 test:
-  adapter: sqlite3
-  database: ":memory:"
-  verbosity: silent
+  adapter: mysql
+  database: db_name
+  username: db_user
+  password: db_pass
+  host: 127.0.0.1
 
 production:
   adapter: mysql
@@ -28,8 +30,9 @@ development:
 
 test:
   adapter: sqlite3
-  database: ":memory:"
-  verbosity: silent
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
 
 production:
   adapter: sqlite3
