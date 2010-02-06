@@ -32,6 +32,9 @@ Chroma32::Application.routes.draw do |map|
   #     resources :comments, :sales
   #     resource :seller
   #   end
+  resources :catalogs do
+    resources :documents
+  end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do
