@@ -38,5 +38,10 @@ module Chroma32
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
+    
+    # Require other libraries after initialization.
+    config.after_initialize do
+      require 'md5'
+    end
   end
 end
