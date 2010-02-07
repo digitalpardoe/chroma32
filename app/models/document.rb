@@ -43,4 +43,8 @@ class Document < ActiveRecord::Base
       Mime::Type.register self.content_type, self.extension
     end
   end
+  
+  def file
+    File.join(Rails.root, "tmp", "cache", "#{self.signature}")
+  end
 end
