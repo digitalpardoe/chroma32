@@ -1,14 +1,4 @@
 class DocumentsController < ApplicationController
-  def show
-    respond_to do |format|
-       format.all {
-         @document = Document.where(:name => params[:id], :extension => request.format.symbol.to_s, :catalog_id => params[:catalog_id]).limit(1).first
-         # TODO: X-Sendfile support, perhaps.
-         send_file @document.file, :type => @document.content_type, :disposition => "attachment", :filename => "#{params[:id]}.#{request.format.symbol.to_s}", :stream => false
-       }
-    end
-  end
-  
   def new
     @document = Document.new
     @catalog = Catalog.find(params[:catalog_id])
@@ -29,6 +19,16 @@ class DocumentsController < ApplicationController
       else
         format.html { render :action => "new" }
       end
+    end
+  end
+  
+  def download
+    respond_to do |format|
+       format.all {
+         @document = Document.where(:name => params[:id], :extension => request.format.symbol.to_s, :catalog_id => params[:catalog_id]).limit(1).first
+         # TODO: X-Sendfile support, perhaps.
+         send_file @document.file, :type => @document.content_type, :disposition => "attachment", :filename => "#{params[:id]}.#{request.format.symbol.to_s}", :stream => false
+       }
     end
   end
 end
