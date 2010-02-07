@@ -10,6 +10,8 @@ class Document < ActiveRecord::Base
   
   attr_accessor :document
   
+  DOCUMENT_CACHE = File.join(Rails.root, "tmp", "cache")
+  
   def before_validation
     # This bit handles the uploading.
     file_ext = File.extname(File.basename(document.original_filename)).gsub(".","")
@@ -19,12 +21,12 @@ class Document < ActiveRecord::Base
     self.extension = file_ext
     self.content_type = document.content_type
     
-    File.open(File.join(Rails.root, "tmp", "cache", "#{self.name}.#{self.extension}"), "wb") { |f| f.write(document.read) }
+    File.open(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), "wb") { |f| f.write(document.read) }
     self.signature = MD5.new(IO.read(File.join(Rails.root, "tmp", "cache", "#{self.name}.#{self.extension}"))).hexdigest
     
-    self.size = File.size(File.join(Rails.root, "tmp", "cache", "#{self.name}.#{self.extension}"))
+    self.size = File.size(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"))
     
-    File.move(File.join(Rails.root, "tmp", "cache", "#{self.name}.#{self.extension}"), File.join(Rails.root, "tmp", "cache", "#{self.signature}"))
+    File.move(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), File.join(DOCUMENT_CACHE, "#{self.signature}"))
   
     # This bit is responsible for handling duplicate file names.
     count = 1
@@ -46,11 +48,11 @@ class Document < ActiveRecord::Base
   
   def before_destroy
     if Document.where(:signature => self.signature).count(:id) <= 1
-      File.delete(File.join(Rails.root, "tmp", "cache", "#{self.signature}"))
+      File.delete(File.join(DOCUMENT_CACHE, "#{self.signature}"))
     end
   end
   
   def file
-    File.join(Rails.root, "tmp", "cache", "#{self.signature}")
+    File.join(DOCUMENT_CACHE, "#{self.signature}")
   end
 end
