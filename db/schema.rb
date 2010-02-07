@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20100203153232) do
     t.string   "name",         :null => false
     t.string   "extension"
     t.string   "content_type", :null => false
+    t.string   "signiature",   :null => false
     t.integer  "size",         :null => false
     t.integer  "catalog_id"
     t.datetime "created_at"
