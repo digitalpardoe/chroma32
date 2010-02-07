@@ -23,6 +23,10 @@ class CatalogsController < ApplicationController
     end
   end
   
+  def edit
+    @catalog = Catalog.find(params[:id])
+  end
+  
   def create
     @catalog = Catalog.new(params[:catalog])
     @catalog.catalog_id = params[:catalog_id]
@@ -32,6 +36,18 @@ class CatalogsController < ApplicationController
         format.html { redirect_to(Catalog.find(params[:catalog_id]), :notice => 'Catalog was successfully created.') }
       else
         format.html { render :action => "new" }
+      end
+    end
+  end
+  
+  def update
+    @catalog = Catalog.find(params[:id])
+    
+    respond_to do |format|
+      if @catalog.update_attributes(params[:catalog])
+        format.html { redirect_to(Catalog.find(@catalog.catalog_id), :notice => 'Catalog was successfully updated.') }
+      else
+        format.html { render :action => "edit" }
       end
     end
   end
