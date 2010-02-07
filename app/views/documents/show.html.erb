@@ -18,10 +18,19 @@
   <%= @document.content_type %>
 </p>
 
+
 <p>
   <b>Signature:</b>
   <%= @document.signature %>
 </p>
+
+
+<% if @document.content_type =~ /image/ %>
+  <p>
+    <b>Image data:</b><br />
+    <%= image_tag download_catalog_document_path(@catalog, @document.name, @document.extension), :title => @document.name, :alt => @document.name %>
+  </p>
+<% end %>
 
 
 <%= link_to 'Edit', edit_catalog_document_path(@document) %> |
