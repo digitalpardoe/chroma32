@@ -8,7 +8,7 @@
     <th></th>
   </tr>
 
-<% @catalogs.each do |catalog| %>
+<% @catalog.catalogs.each do |catalog| %>
   <tr>
     <td><%= catalog.name %></td>
     <td><%= link_to 'Show', catalog %></td>
@@ -20,4 +20,4 @@
 
 <br />
 
-<%= link_to 'New catalog', new_catalog_catalog_path(@catalog) %>
+<%= link_to 'New catalog', new_catalog_catalog_path(@catalog) %> | <%= link_to 'New document', new_catalog_document_path(@catalog) %>

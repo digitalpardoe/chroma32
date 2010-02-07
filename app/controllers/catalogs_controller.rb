@@ -1,7 +1,6 @@
 class CatalogsController < ApplicationController
   def index
     @catalog = Catalog.find(Catalog.root.id)
-    @catalogs = Catalog.where(:catalog_id => Catalog.root.id)
     
     respond_to do |format|
       format.html { render :action => "show" }
@@ -10,7 +9,6 @@ class CatalogsController < ApplicationController
   
   def show
     @catalog = Catalog.find(params[:id])
-    @catalogs = Catalog.where(:catalog_id => params[:id])
     
     respond_to do |format|
       format.html
