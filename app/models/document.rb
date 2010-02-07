@@ -37,5 +37,10 @@ class Document < ActiveRecord::Base
         break
       end
     end
+    
+    # Need to register the MIME type.
+    if !Mime::Type.lookup_by_extension(file_ext)
+      Mime::Type.register self.content_type, self.extension
+    end
   end
 end
