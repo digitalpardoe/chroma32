@@ -33,7 +33,7 @@ Chroma32::Application.routes.draw do |map|
   #     resource :seller
   #   end
   resources :catalogs, :only => [:index, :show, :edit, :update, :destroy] do
-    resources :documents
+    resources :documents, :except => [:index]
     resource :catalog, :only => [:create, :new]
   end
 

@@ -18,6 +18,34 @@
 <% end %>
 </table>
 
+<h1>Listing documents</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Extension</th>
+    <th>Size</th>
+    <th>Content type</th>
+    <th>Signature</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @catalog.documents.each do |document| %>
+  <tr>
+    <td><%= document.name %></td>
+    <td><%= document.extension %></td>
+    <td><%= document.size %></td>
+    <td><%= document.content_type %></td>
+    <td><%= document.signature %></td>
+    <td><%= link_to 'Show', catalog_document_path(@catalog, document) %></td>
+    <td><%= link_to 'Edit', edit_catalog_document_path(@catalog, document) %></td>
+    <td><%= link_to 'Destroy', catalog_document_path(@catalog, document), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
 <br />
 
 <%= link_to 'New catalog', new_catalog_catalog_path(@catalog) %> | <%= link_to 'New document', new_catalog_document_path(@catalog) %>
