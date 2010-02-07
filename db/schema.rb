@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(:version => 20100203153232) do
   end
 
   create_table "documents", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "name",         :null => false
     t.string   "extension"
-    t.integer  "size",       :null => false
+    t.string   "content_type", :null => false
+    t.integer  "size",         :null => false
     t.integer  "catalog_id"
     t.datetime "created_at"
     t.datetime "updated_at"

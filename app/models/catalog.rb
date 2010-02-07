@@ -6,6 +6,6 @@ class Catalog < ActiveRecord::Base
   has_many :documents
   
   def self.root
-    self.where(:name => "root").order("created_at ASC").first
+    self.where(:name => "root").order("created_at ASC").limit(1).first
   end
 end
