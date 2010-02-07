@@ -4,4 +4,8 @@ class Catalog < ActiveRecord::Base
   belongs_to :catalogs
   has_many :catalogs
   has_many :documents
+  
+  def self.root
+    self.where(:name => "root").order("created_at ASC").first
+  end
 end
