@@ -1,4 +1,13 @@
 class DocumentsController < ApplicationController
+  def show
+    @document = Document.find(params[:id])
+    @catalog = Catalog.find(params[:catalog_id])
+    
+    respond_to do |format|
+      format.html
+    end
+  end
+  
   def new
     @document = Document.new
     @catalog = Catalog.find(params[:catalog_id])
