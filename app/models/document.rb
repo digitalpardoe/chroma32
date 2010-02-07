@@ -44,6 +44,12 @@ class Document < ActiveRecord::Base
     end
   end
   
+  def before_destroy
+    if Document.where(:signature => self.signature).count(:id) <= 1
+      File.delete(File.join(Rails.root, "tmp", "cache", "#{self.signature}"))
+    end
+  end
+  
   def file
     File.join(Rails.root, "tmp", "cache", "#{self.signature}")
   end

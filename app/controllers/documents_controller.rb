@@ -31,6 +31,15 @@ class DocumentsController < ApplicationController
     end
   end
   
+  def destroy
+    @document = Document.find(params[:id])
+    @document.destroy
+    
+    respond_to do |format|
+      format.html { redirect_to(catalog_path(params[:catalog_id])) }
+    end
+  end
+  
   def download
     respond_to do |format|
        format.all {
