@@ -2,7 +2,7 @@ class Document < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :size
   validates_presence_of :content_type
-  validates_presence_of :signiature
+  validates_presence_of :signature
   
   belongs_to :catalog
   
@@ -17,10 +17,10 @@ class Document < ActiveRecord::Base
     self.content_type = document.content_type
     
     File.open(File.join(Rails.root, "tmp", "#{self.name}.#{self.extension}"), "wb") { |f| f.write(document.read) }
-    self.signiature = MD5.new(IO.read(File.join(Rails.root, "tmp", "#{self.name}.#{self.extension}"))).hexdigest
+    self.signature = MD5.new(IO.read(File.join(Rails.root, "tmp", "#{self.name}.#{self.extension}"))).hexdigest
     
     self.size = File.size(File.join(Rails.root, "tmp", "#{self.name}.#{self.extension}"))
     
-    File.move(File.join(Rails.root, "tmp", "#{self.name}.#{self.extension}"), File.join(Rails.root, "tmp", "#{self.signiature}"))
+    File.move(File.join(Rails.root, "tmp", "#{self.name}.#{self.extension}"), File.join(Rails.root, "tmp", "#{self.signature}"))
   end
 end
