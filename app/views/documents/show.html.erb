@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%= @document.name %>
+</p>
+
+<p>
+  <b>Extension:</b>
+  <%= @document.extension %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @document.size %>
+</p>
+
+<p>
+  <b>Content type:</b>
+  <%= @document.content_type %>
+</p>
+
+<p>
+  <b>Signature:</b>
+  <%= @document.signature %>
+</p>
+
+
+<%= link_to 'Edit', edit_catalog_document_path(@document) %> |
+<%= link_to 'Back', catalog_path(@catalog) %>
