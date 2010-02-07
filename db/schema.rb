@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20100207123819) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "content_type", :null => false
-    t.string   "signiature",   :null => false
+    t.string   "signature",    :null => false
   end
 
   create_table "sessions", :force => true do |t|
