@@ -35,4 +35,15 @@ class CatalogsController < ApplicationController
       end
     end
   end
+  
+  def destroy
+    @catalog = Catalog.find(params[:id])
+    parent_catalog = @catalog.catalog_id
+
+    @catalog.destroy
+    
+    respond_to do |format|
+      format.html { redirect_to(catalog_path(parent_catalog)) }
+    end
+  end
 end
