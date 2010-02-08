@@ -1,14 +1,11 @@
 class Document < ActiveRecord::Base
-  validates_presence_of :name
-  validates_presence_of :size
-  validates_presence_of :content_type
-  validates_presence_of :signature
-  validates_presence_of :catalog_id
+  validates_presence_of :name, :size, :content_type, :signature, :catalog_id
   validates_uniqueness_of :name, :scope => [:catalog_id]
   
   belongs_to :catalog
   
   before_validation :persist_document, :on => :create
+  before_destroy :cleanup_document
   
   attr_accessor :document
   
@@ -26,7 +23,7 @@ class Document < ActiveRecord::Base
     self.content_type = document.content_type
     
     File.open(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), "wb") { |f| f.write(document.read) }
-    self.signature = MD5.new(IO.read(File.join(Rails.root, "tmp", "cache", "#{self.name}.#{self.extension}"))).hexdigest
+    self.signature = MD5.new(IO.read(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"))).hexdigest
     
     self.size = File.size(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"))
     
@@ -50,7 +47,7 @@ class Document < ActiveRecord::Base
     end
   end
   
-  def before_destroy
+  def cleanup_document
     if Document.where(:signature => self.signature).count(:id) <= 1
       File.delete(File.join(DOCUMENT_CACHE, "#{self.signature}"))
     end
