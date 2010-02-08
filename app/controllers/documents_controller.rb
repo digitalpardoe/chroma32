@@ -1,6 +1,10 @@
 class DocumentsController < ApplicationController
+  # This before filter prevents CanCan's automatic loading of resources from
+  # breaking the download action, if this isn't here we get an error.
+  before_filter :download, :only => :download
+  load_and_authorize_resource
+  
   def show
-    @document = Document.find(params[:id])
     @catalog = Catalog.find(params[:catalog_id])
     
     respond_to do |format|
@@ -9,7 +13,6 @@ class DocumentsController < ApplicationController
   end
   
   def new
-    @document = Document.new
     @catalog = Catalog.find(params[:catalog_id])
     
     respond_to do |format|
@@ -18,11 +21,9 @@ class DocumentsController < ApplicationController
   end
   
   def edit
-    @document = Document.find(params[:id])
   end
   
   def create
-    @document = Document.new(params[:document])
     @catalog = Catalog.find(params[:catalog_id])
     @document.catalog = @catalog
     
@@ -36,8 +37,6 @@ class DocumentsController < ApplicationController
   end
   
   def update
-    @document = Document.find(params[:id])
-    
     respond_to do |format|
       if @document.update_attributes(params[:document])
         format.html { redirect_to(@document.catalog, :notice => 'Document was successfully updated.') }
@@ -48,7 +47,6 @@ class DocumentsController < ApplicationController
   end
   
   def destroy
-    @document = Document.find(params[:id])
     @document.destroy
     
     respond_to do |format|

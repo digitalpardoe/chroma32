@@ -1,4 +1,6 @@
 class CatalogsController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     @catalog = Catalog.find(Catalog.root.id)
     
@@ -8,27 +10,21 @@ class CatalogsController < ApplicationController
   end
   
   def show
-    @catalog = Catalog.find(params[:id])
-    
     respond_to do |format|
       format.html
     end
   end
   
   def new
-    @catalog = Catalog.new
-    
     respond_to do |format|
       format.html
     end
   end
   
   def edit
-    @catalog = Catalog.find(params[:id])
   end
   
   def create
-    @catalog = Catalog.new(params[:catalog])
     @catalog.catalog = Catalog.find(params[:catalog_id])
     
     respond_to do |format|
@@ -41,8 +37,6 @@ class CatalogsController < ApplicationController
   end
   
   def update
-    @catalog = Catalog.find(params[:id])
-    
     respond_to do |format|
       if @catalog.update_attributes(params[:catalog])
         format.html { redirect_to(@catalog.catalog, :notice => 'Catalog was successfully updated.') }
@@ -53,7 +47,6 @@ class CatalogsController < ApplicationController
   end
   
   def destroy
-    @catalog = Catalog.find(params[:id])
     @catalog.destroy
     
     respond_to do |format|
