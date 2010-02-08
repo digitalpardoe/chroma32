@@ -50,7 +50,7 @@
 <br />
 
 <% if @catalog.catalog_id %>
-  <%= link_to 'Back', catalog_path(@catalog.catalog_id) %> | 
+  <%= link_to 'Back', catalog_path(@catalog.catalog) %> | 
 <% end %>
 
 <%= link_to 'New catalog', new_catalog_catalog_path(@catalog) %> | <%= link_to 'New document', new_catalog_document_path(@catalog) %>

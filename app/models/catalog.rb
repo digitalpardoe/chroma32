@@ -8,4 +8,15 @@ class Catalog < ActiveRecord::Base
   def self.root
     self.where(:name => "root").order("created_at ASC").limit(1).first
   end
+  
+  # TODO: Check the 'catalog' methods below out, they should be created by the
+  # relationship above but appear to be missing.
+  
+  def catalog
+    Catalog.find(self.catalog_id)
+  end
+  
+  def catalog=(catalog)
+    self.catalog_id = Catalog.find(catalog).id
+  end
 end
