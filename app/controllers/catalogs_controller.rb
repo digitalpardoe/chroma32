@@ -29,11 +29,11 @@ class CatalogsController < ApplicationController
   
   def create
     @catalog = Catalog.new(params[:catalog])
-    @catalog.catalog_id = params[:catalog_id]
+    @catalog.catalog = Catalog.find(params[:catalog_id])
     
     respond_to do |format|
       if @catalog.save
-        format.html { redirect_to(Catalog.find(params[:catalog_id]), :notice => 'Catalog was successfully created.') }
+        format.html { redirect_to(@catalog, :notice => 'Catalog was successfully created.') }
       else
         format.html { render :action => "new" }
       end
@@ -45,7 +45,7 @@ class CatalogsController < ApplicationController
     
     respond_to do |format|
       if @catalog.update_attributes(params[:catalog])
-        format.html { redirect_to(Catalog.find(@catalog.catalog_id), :notice => 'Catalog was successfully updated.') }
+        format.html { redirect_to(@catalog.catalog, :notice => 'Catalog was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end
@@ -54,12 +54,10 @@ class CatalogsController < ApplicationController
   
   def destroy
     @catalog = Catalog.find(params[:id])
-    parent_catalog = @catalog.catalog_id
-
     @catalog.destroy
     
     respond_to do |format|
-      format.html { redirect_to(catalog_path(parent_catalog)) }
+      format.html { redirect_to(@catalog.catalog) }
     end
   end
 end
