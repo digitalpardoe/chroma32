@@ -17,6 +17,10 @@ class DocumentsController < ApplicationController
     end
   end
   
+  def edit
+    @document = Document.find(params[:id])
+  end
+  
   def create
     @document = Document.new(params[:document])
     @catalog = Catalog.find(params[:catalog_id])
@@ -27,6 +31,18 @@ class DocumentsController < ApplicationController
         format.html { redirect_to(Catalog.find(params[:catalog_id]), :notice => 'Document was successfully uploaded.') }
       else
         format.html { render :action => "new" }
+      end
+    end
+  end
+  
+  def update
+    @document = Document.find(params[:id])
+    
+    respond_to do |format|
+      if @document.update_attributes(params[:document])
+        format.html { redirect_to(@document.catalog, :notice => 'Document was successfully updated.') }
+      else
+        format.html { render :action => "edit" }
       end
     end
   end

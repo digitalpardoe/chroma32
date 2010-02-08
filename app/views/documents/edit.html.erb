@@ -1,0 +1,17 @@
+<h1>Editing document</h1>
+
+<% form_for(@document, :url => catalog_document_path) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>
+
+<%= link_to 'Show', catalog_document_path(@document) %> |
+<%= link_to 'Back', catalog_path(@document.catalog) %>
