@@ -15,6 +15,8 @@ class Document < ActiveRecord::Base
   DOCUMENT_CACHE = File.join(Rails.root, "tmp", "cache")
   
   def persist_document
+    return if !document
+    
     # This bit handles the uploading.
     file_ext = File.extname(File.basename(document.original_filename)).gsub(".","")
     file_name = File.basename(document.original_filename, file_ext).chomp(".")
