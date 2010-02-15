@@ -1,7 +1,7 @@
 interesting_file:
   name: Interesting File
   extension: jpg
-  content_type: image/jpg
+  content_type: image/jpeg
   size: 5976883
   signature: f97c5d29941bfb1b2fdab0874906ab82
   catalog: root

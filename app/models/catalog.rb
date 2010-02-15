@@ -19,4 +19,12 @@ class Catalog < ActiveRecord::Base
   def catalog=(catalog)
     self.catalog_id = Catalog.find(catalog).id
   end
+  
+  def destroy
+    if self.name == 'root' && !self.catalog
+      raise ActiveRecord::ActiveRecordError, "cannot delete 'root' catalog" 
+    else
+      super
+    end
+  end
 end
