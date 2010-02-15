@@ -9,7 +9,6 @@ gem "rails", "3.0.0.beta"
 gem "sqlite3-ruby", :require => "sqlite3"
 
 ## Bundle the gems you use:
-gem "authlogic", ">= 2.1.3", :git => "git://github.com/digitalpardoe/authlogic.git"
 gem "cancan"
 
 ## Bundle gems used only in certain environments:
