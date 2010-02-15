@@ -11,6 +11,9 @@ gem "sqlite3-ruby", :require => "sqlite3"
 ## Bundle the gems you use:
 gem "cancan"
 
+## Bundle testing gems:
+gem "rspec-rails", "2.0.0.a6"
+
 ## Bundle gems used only in certain environments:
 # gem "rspec", :group => :test
 # group :test do
