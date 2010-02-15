@@ -12,10 +12,4 @@ gem "sqlite3-ruby", :require => "sqlite3"
 gem "cancan"
 
 ## Bundle testing gems:
-gem "rspec-rails", "2.0.0.a6"
-
-## Bundle gems used only in certain environments:
-# gem "rspec", :group => :test
-# group :test do
-#   gem "webrat"
-# end
+gem "rspec-rails", "2.0.0.a6", :group => :test
