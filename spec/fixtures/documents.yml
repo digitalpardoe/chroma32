@@ -1,0 +1,15 @@
+interesting_file:
+  name: Interesting File
+  extension: jpg
+  content_type: image/jpg
+  size: 5976883
+  signature: f97c5d29941bfb1b2fdab0874906ab82
+  catalog: root
+
+boring_document:
+  name: Boring Document
+  extension: txt
+  content_type: text/plain
+  size: 4710
+  signature: b8a9f715dbb64fd5c56e7783c6820a61
+  catalog: sub_catalog

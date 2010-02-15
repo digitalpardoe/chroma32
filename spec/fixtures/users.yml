@@ -1,0 +1,19 @@
+# Password is 'testing'.
+
+admin:
+  email: admin@test.com
+  crypted_password: 38e9da8b7c7ab5472e7690097ef5d071e3d3a8ff2d5240852ee4b181497b41b779dcb498821436bf49d84922d786507cd6776d5b796840b63bd46e5168b9ee15
+  password_salt: 1DzfPd3cIW0UlsfgIXx4
+  persistence_token: 4dbe7a45e5cbd7fd25385b2b8cfab2b06fd8f7fe5edadb6d3a4580173f52e2cda48df592ff4f58906ec46afdcf6fa19b7b64c59db1438b1778df0334640cb7c0
+  single_access_token: ZvEG8QnOy4jYKkyXyBVr
+  perishable_token: 6iOQtZauE1Tgv_kKLfKi
+  roles_mask: 1
+
+user:
+  email: user@test.com
+  crypted_password: 32e75f90921e7e0176dcb9d6a6cc8203d06e40c4cfea292a6a455f84f3e936f793009775bab5d430947a3e1c01207e020024e7ca4f8bdf02421ac77b2132b872
+  password_salt: tzyRhWn1adIID0bJ3DIh
+  persistence_token: e8cf760b59d7e1aa1f696ce9bf2dc17ab019a19e2236f8c0d604204686afac8d13e439af1146c5918cebdd6ea572da0c901a63a2398ceb378d21b43c266ea4dd
+  single_access_token: MmNUnxB6AQ7gahFq2g7e
+  perishable_token: iY2qe-clOtqZw6-RszKl
+  roles_mask: 0
