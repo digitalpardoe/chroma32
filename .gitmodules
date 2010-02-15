@@ -1,3 +1,6 @@
 [submodule "vendor/plugins/authlogic"]
 	path = vendor/plugins/authlogic
 	url = git@github.com:digitalpardoe/authlogic.git
+[submodule "vendor/plugins/machinist"]
+	path = vendor/plugins/machinist
+	url = git@github.com:digitalpardoe/machinist.git
