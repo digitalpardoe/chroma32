@@ -26,6 +26,7 @@ namespace :deploy do
 	task :after_update do
 		run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 		run "ln -s #{shared_path}/assets/documents #{release_path}/tmp/documents"
+		run "cd #{release_path} && git submodule init && git submodule update"
 	end
  
 	desc "Restart application."
