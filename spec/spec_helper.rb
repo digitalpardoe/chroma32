@@ -59,3 +59,13 @@ Rspec::Core.configure do |config|
   config.before(:all)    { Sham.reset(:before_all)  }
   config.before(:each)   { Sham.reset(:before_each) }
 end
+
+# This method has been added to allow warnings to be supressed.
+
+def quietly
+  v = $VERBOSE
+  $VERBOSE = nil
+  yield
+  ensure
+    $VERBOSE = v
+end

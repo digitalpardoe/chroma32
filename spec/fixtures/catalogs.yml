@@ -1,8 +1,0 @@
-root:
-  id: 1
-  name: root
-
-sub_catalog:
-  id: 2
-  name: Sub Catalog
-  catalog_id: 1
