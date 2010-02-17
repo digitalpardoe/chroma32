@@ -9,7 +9,7 @@ class Document < ActiveRecord::Base
   
   attr_accessor :document
   
-  DOCUMENT_CACHE = File.join(Rails.root, "tmp", "cache")
+  DOCUMENT_CACHE = File.join(Rails.root, "tmp", "documents")
   
   def persist_document
     return if !document
