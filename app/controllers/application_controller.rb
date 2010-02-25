@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   
   private
   def themeify
-    prepend_view_path("#{THEME_ROOT}/#{Setting.application.value("theme")}/views")
+    prepend_view_path("#{THEMES_DIR}/#{Setting.application.value("theme")}/views")
   end
   
   def current_user_session
