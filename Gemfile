@@ -13,5 +13,5 @@ gem "mysql", :group => "production"
 gem "cancan"
 
 ## Bundle testing gems:
-gem "rspec-rails", "2.0.0.a6", :group => :test
+gem "rspec-rails", "2.0.0.a9", :group => :test
 gem "faker", :group => :test
