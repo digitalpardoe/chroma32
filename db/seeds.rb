@@ -7,3 +7,4 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 Catalog.create(:name => 'root')
+Setting.create(:resource => RESOURCE, :key => 'theme', :value => 'chroma32')
