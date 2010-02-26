@@ -55,12 +55,7 @@ class DocumentsController < ApplicationController
   end
   
   def download
-    respond_to do |format|
-       format.all {
-         @document = Document.where(:name => params[:id], :extension => params[:format], :catalog_id => params[:catalog_id]).limit(1).first
-         # TODO: X-Sendfile support, perhaps.
-         send_file @document.file, :type => @document.content_type, :disposition => "attachment", :filename => "#{params[:id]}.#{params[:format]}", :stream => false
-       }
-    end
+    @document = Document.where(:name => params[:id], :extension => params[:format], :catalog_id => params[:catalog_id]).limit(1).first
+    send_file @document.file, :type => @document.content_type, :disposition => "attachment", :filename => "#{params[:id]}.#{params[:format]}", :stream => false
   end
 end
