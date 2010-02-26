@@ -1,5 +1,5 @@
 class Document < ActiveRecord::Base
-  validates_presence_of :document
+  validates_presence_of :document, :if => Proc.new { |document| document.signature == nil }
   validates_presence_of :name, :size, :content_type, :signature, :catalog_id, :if => Proc.new { |document| document.document != nil }
   validates_uniqueness_of :name, :scope => [:catalog_id]
   
