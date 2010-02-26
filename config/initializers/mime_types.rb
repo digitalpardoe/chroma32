@@ -13,3 +13,7 @@ unless File.basename( $0 ) == "rake"
     end
   end
 end
+
+# Registering useful MIME types for theming.
+Mime::Type.register 'image/gif', :gif
+Mime::Type.register 'application/x-shockwave-flash', :swf

@@ -10,7 +10,8 @@ Chroma32::Application.routes.draw do |map|
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
   match 'catalogs/:catalog_id/documents/download/:id(.:format)' => 'documents#download', :as => :download_catalog_document
-
+  match "theme/:resource/:filename(.:format)" => "theme#show", :as => :theme_resource
+  
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :users
