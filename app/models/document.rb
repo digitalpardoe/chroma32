@@ -21,11 +21,10 @@ class Document < ActiveRecord::Base
     return if !document
     
     # This bit handles the uploading.
-    file_ext = File.extname(File.basename(document.original_filename)).gsub(".","")
-    file_name = File.basename(document.original_filename, file_ext).chomp(".")
-    
-    self.name = file_name
-    self.extension = file_ext
+    file = File.name_and_ext(File.basename(document.original_filename))
+
+    self.name = file[:name]
+    self.extension = file[:extension]
     self.content_type = document.content_type
     
     save_to_disk

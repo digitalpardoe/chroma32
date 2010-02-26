@@ -13,6 +13,7 @@ module Chroma32
 
     # Add additional load paths for your own custom dirs
     # config.load_paths += %W( #{config.root}/extras )
+    config.load_paths += %W( #{Rails.root}/lib/extensions )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named
@@ -42,6 +43,7 @@ module Chroma32
     # Require other libraries after initialization.
     config.after_initialize do
       require 'md5'
+      require 'file'
     end
   end
 end
