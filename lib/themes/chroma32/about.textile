@@ -1,0 +1,6 @@
+h1. Chroma32
+
+This is the default theme for Chroma32.
+
+More information;
+"http://chroma32.com/":http://chroma32.com/
