@@ -15,3 +15,6 @@ gem "cancan"
 ## Bundle testing gems:
 gem "rspec-rails", "2.0.0.a9", :group => :test
 gem "faker", :group => :test
+
+## Engines
+gem 'plugineer', :require => 'plugineer', :path => 'lib/engines/plugineer'
