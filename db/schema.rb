@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100225222254) do
+ActiveRecord::Schema.define(:version => 20100317175021) do
 
   create_table "catalogs", :force => true do |t|
     t.string   "name",       :null => false
@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(:version => 20100225222254) do
     t.string   "content_type", :null => false
     t.string   "signature",    :null => false
   end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.boolean  "protected"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.string  "role_id"
+    t.boolean "user_id"
+  end
+
+  add_index "roles_users", ["role_id", "user_id"], :name => "index_roles_users_on_role_id_and_user_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -63,7 +77,6 @@ ActiveRecord::Schema.define(:version => 20100225222254) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "roles_mask"
   end
 
 end

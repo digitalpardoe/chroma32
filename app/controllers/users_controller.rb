@@ -16,12 +16,15 @@ class UsersController < ApplicationController
   end
 
   def new
+    @roles = Role.all
+    
     respond_to do |format|
       format.html
     end
   end
 
   def edit
+    @roles = Role.all
   end
 
   def create

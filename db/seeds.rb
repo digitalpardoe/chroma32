@@ -8,3 +8,4 @@
 
 Catalog.create(:name => 'root')
 Setting.create(:resource => RESOURCE_ID, :key => 'theme', :value => 'chroma32')
+Role.create( [ { :name => 'admin', :protected => true }, { :name => 'client', :protected => true } ] )

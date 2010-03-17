@@ -15,11 +15,11 @@
   </div>
   <div class="field">
     <%= f.label :role %><br />
-    <% for role in User::ROLES %>
-      <%= check_box_tag "user[roles][]", role, @user.roles.include?(role) %>
-      <%= role.humanize %><br />
+    <% for role in @roles %>
+      <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+      <%= role.name.humanize %><br />
     <% end %>
-    <%= hidden_field_tag "user[roles][]", "" %>
+    <%= hidden_field_tag "user[role_ids][]", "" %>
   </div>
   <div class="actions">
     <%= f.submit %>
