@@ -16,6 +16,7 @@ Chroma32::Application.routes.draw do |map|
   #   resources :products
   resources :users
   resource :user_session, :only => [:new, :create, :destroy]
+  resources :events
 
   # Sample resource route with options:
   #   resources :products do
