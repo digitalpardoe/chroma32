@@ -12,6 +12,9 @@ class Ability
       can :read, User do |user_record|
         user_record == user
       end
+      can :read, Event do |event_record|
+        event_record.user.include?user
+      end
     end
     
     Dir.glob("#{PLUGINS_DIR}/*").each do |dir|
