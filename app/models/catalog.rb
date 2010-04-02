@@ -4,6 +4,7 @@ class Catalog < ActiveRecord::Base
   belongs_to :catalogs
   has_many :catalogs, :dependent => :destroy
   has_many :documents, :dependent => :destroy
+  has_and_belongs_to_many :events
   
   def self.root
     self.where(:name => "root").order("created_at ASC").limit(1).first
