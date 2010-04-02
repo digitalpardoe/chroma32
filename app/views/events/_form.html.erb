@@ -7,7 +7,7 @@
   </div>
   <div class="field">
     <%= f.label :date %><br />
-    <%= date_select(@event, :date, :order => [:day, :month, :year]) %>
+    <%= date_select('event', 'date', :order => [:day, :month, :year]) %>
   </div>
   <div class="field">
     <%= f.label :location %><br />
