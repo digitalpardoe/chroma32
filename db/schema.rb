@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100318083125) do
+ActiveRecord::Schema.define(:version => 20100319190118) do
 
   create_table "catalogs", :force => true do |t|
     t.string   "name",       :null => false
@@ -17,6 +17,13 @@ ActiveRecord::Schema.define(:version => 20100318083125) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "catalogs_events", :id => false, :force => true do |t|
+    t.string  "catalog_id"
+    t.boolean "event_id"
+  end
+
+  add_index "catalogs_events", ["catalog_id", "event_id"], :name => "index_catalogs_events_on_catalog_id_and_event_id"
 
   create_table "documents", :force => true do |t|
     t.string   "name",         :null => false
