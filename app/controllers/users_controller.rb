@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @roles = Role.all
+    @roles = Role.unprotected
     
     respond_to do |format|
       format.html
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @roles = Role.all
+    @roles = Role.unprotected
   end
 
   def create
