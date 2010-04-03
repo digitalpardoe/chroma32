@@ -1,13 +1,19 @@
 class Catalog < ActiveRecord::Base
+  ROOT_NAME = "root"
+  
   validates_presence_of :name
+  validates_exclusion_of :name, :in => ROOT_NAME, :message => "is reserved"
   
   belongs_to :catalogs
   has_many :catalogs, :dependent => :destroy
   has_many :documents, :dependent => :destroy
   has_and_belongs_to_many :events
   
+  scope :sans_root, where("name != ?", ROOT_NAME)
+  scope :top_level, where("catalog_id = ?", where(:name => ROOT_NAME).order("created_at ASC").limit(1).first.id)
+  
   def self.root
-    self.where(:name => "root").order("created_at ASC").limit(1).first
+    self.where(:name => ROOT_NAME).order("created_at ASC").limit(1).first
   end
   
   # TODO: Check the 'catalog' methods below out, they should be created by the

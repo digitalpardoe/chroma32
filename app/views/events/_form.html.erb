@@ -17,6 +17,10 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+  <div class="field">
+    <%= f.label :catalog %><br />
+    <%= collection_select :event, :catalog_ids, Catalog.sans_root.top_level.all, :id, :name, {}, :multiple => true, :name => 'event[catalog_ids][]' %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
