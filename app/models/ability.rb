@@ -8,7 +8,6 @@ class Ability
       can :manage, :all
     else
       can :manage, UserSession
-      can :create, User
       can :read, User do |user_record|
         user_record == user
       end
