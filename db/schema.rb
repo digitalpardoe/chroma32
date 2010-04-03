@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100403142300) do
+ActiveRecord::Schema.define(:version => 20100403210711) do
 
   create_table "catalogs", :force => true do |t|
     t.string   "name",         :null => false
@@ -46,12 +46,12 @@ ActiveRecord::Schema.define(:version => 20100403142300) do
     t.datetime "updated_at"
   end
 
-  create_table "events_users", :id => false, :force => true do |t|
+  create_table "events_roles", :id => false, :force => true do |t|
     t.string  "event_id"
-    t.boolean "user_id"
+    t.boolean "role_id"
   end
 
-  add_index "events_users", ["event_id", "user_id"], :name => "index_events_users_on_event_id_and_user_id"
+  add_index "events_roles", ["event_id", "role_id"], :name => "index_events_roles_on_event_id_and_role_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

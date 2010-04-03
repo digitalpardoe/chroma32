@@ -15,11 +15,7 @@
   </div>
   <div class="field">
     <%= f.label :role %><br />
-    <% for role in @roles %>
-      <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-      <%= role.name.humanize %><br />
-    <% end %>
-    <%= hidden_field_tag "user[role_ids][]", "" %>
+    <%= collection_select :user, :role_ids, Role.visible.all, :id, :name, {}, :multiple => true, :name => 'user[role_ids][]' %>
   </div>
   <div class="actions">
     <%= f.submit %>

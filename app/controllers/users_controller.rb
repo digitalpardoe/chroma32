@@ -16,15 +16,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @roles = Role.unprotected
-    
     respond_to do |format|
       format.html
     end
   end
 
   def edit
-    @roles = Role.unprotected
   end
 
   def create
