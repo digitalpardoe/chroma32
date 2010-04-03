@@ -10,12 +10,13 @@ class Catalog < ActiveRecord::Base
   has_and_belongs_to_many :events
   
   scope :sans_root, where("name != ?", ROOT_NAME)
-  scope :top_level, where("catalog_id = ?", where(:name => ROOT_NAME).order("created_at ASC").limit(1).first.id)
+  
+  before_validation :generate_complex_name
   
   def self.root
     self.where(:name => ROOT_NAME).order("created_at ASC").limit(1).first
   end
-  
+
   # TODO: Check the 'catalog' methods below out, they should be created by the
   # relationship above but appear to be missing.
   
@@ -33,5 +34,18 @@ class Catalog < ActiveRecord::Base
     else
       super
     end
+  end
+  
+  private
+  def generate_complex_name
+    catalog = self.catalog
+    complex_name = [ self.name ]
+    
+    while (catalog.name != ROOT_NAME)
+      complex_name << catalog.name
+      catalog = catalog.catalog
+    end
+    
+    self.complex_name = complex_name.reverse.join(" - ")
   end
 end

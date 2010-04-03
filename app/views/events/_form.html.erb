@@ -19,7 +19,7 @@
   </div>
   <div class="field">
     <%= f.label :catalog %><br />
-    <%= collection_select :event, :catalog_ids, Catalog.sans_root.top_level.all, :id, :name, {}, :multiple => true, :name => 'event[catalog_ids][]' %>
+    <%= collection_select :event, :catalog_ids, Catalog.sans_root.order("complex_name ASC").all, :id, :complex_name, {}, :multiple => true, :name => 'event[catalog_ids][]' %>
   </div>
   <div class="actions">
     <%= f.submit %>
