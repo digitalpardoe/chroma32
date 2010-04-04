@@ -10,4 +10,13 @@ catalog = Catalog.new( { :name => 'root' } )
 catalog.save(:validate => false)
 
 Setting.create(:resource => RESOURCE_ID, :key => 'theme', :value => 'chroma32')
-Role.create( [ { :name => 'admin', :protected => true }, { :name => 'client', :protected => true } ] )
+
+admin_role = Role.new
+admin_role.name = 'admin'
+admin_role.protected = true
+admin_role.save
+
+client_role = Role.new
+client_role.name = 'client'
+client_role.protected = true
+client_role.save
