@@ -56,6 +56,11 @@ class DocumentsController < ApplicationController
   
   def download
     @document = Document.where(:name => params[:id], :extension => params[:format], :catalog_id => params[:catalog_id]).limit(1).first
-    send_file @document.file, :type => @document.content_type, :disposition => "attachment", :filename => "#{params[:id]}.#{params[:format]}", :stream => false
+    
+    if can? :read, @document
+      send_file @document.file, :type => @document.content_type, :disposition => "attachment", :filename => "#{params[:id]}.#{params[:format]}", :stream => false
+    else
+      raise CanCan::AccessDenied
+    end
   end
 end
