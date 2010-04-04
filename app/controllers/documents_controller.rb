@@ -56,11 +56,8 @@ class DocumentsController < ApplicationController
   
   def download
     @document = Document.where(:name => params[:id], :extension => params[:format], :catalog_id => params[:catalog_id]).limit(1).first
+    unauthorized! if cannot? :read, @document
     
-    if can? :read, @document
-      send_file @document.file, :type => @document.content_type, :disposition => "attachment", :filename => "#{params[:id]}.#{params[:format]}", :stream => false
-    else
-      raise CanCan::AccessDenied
-    end
+    send_file @document.file, :type => @document.content_type, :disposition => "attachment", :filename => "#{params[:id]}.#{params[:format]}", :stream => false
   end
 end

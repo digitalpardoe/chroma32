@@ -18,6 +18,7 @@
     <% if !current_user %>
       <%= link_to "Log In", new_user_session_path %>
     <% else %>
+      <%= link_to "Themes", themes_path %> | 
       <%= link_to "Catalogs", catalogs_path %> |
       <%= link_to "Events", events_path %> | 
       <%= link_to "Users", users_path %> | 

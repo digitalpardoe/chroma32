@@ -14,6 +14,7 @@ gem "mysql", :group => "production"
 
 ## Bundle the gems you use:
 gem "cancan"
+gem "RedCloth"
 
 ## Bundle testing gems:
 gem "rspec-rails", "2.0.0.beta.3", :group => :test

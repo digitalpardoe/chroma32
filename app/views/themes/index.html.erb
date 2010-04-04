@@ -1,0 +1,25 @@
+<h1>Listing theme</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @themes.each do |theme| %>
+  <tr>
+    <% form_for :theme, :url => { :action => "update", :id => theme.canonical }, :html => { :method => :put } do |f| %>
+      <td><%= theme.name %></td>
+      <td><%= textilize(theme.description).html_safe %></td>
+      <td><%= f.submit %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New event', new_event_path %>
