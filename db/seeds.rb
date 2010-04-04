@@ -6,6 +6,8 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-Catalog.create(:name => 'root')
+catalog = Catalog.new( { :name => 'root' } )
+catalog.save(:validate => false)
+
 Setting.create(:resource => RESOURCE_ID, :key => 'theme', :value => 'chroma32')
 Role.create( [ { :name => 'admin', :protected => true }, { :name => 'client', :protected => true } ] )
