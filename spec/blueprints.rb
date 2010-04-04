@@ -8,7 +8,6 @@ Sham.define do
   content_type(:unique => false) { rand(2) == 0 ? 'image/jpeg' : 'text/plain' }
   email { Faker::Internet.email }
   random_hash { MD5.new(rand(10000).to_s) }
-  group(:unique => false) { [ rand(2) == 0 ? 'admin' : 'user' ] }
 end
 
 ## Catalog blueprints.
@@ -45,6 +44,23 @@ Document.blueprint do
   catalog { Catalog.make }
 end
 
+## Role blueprints
+
+Role.blueprint(:admin) do
+  name { 'admin' }
+  protected { true }
+end
+
+Role.blueprint(:client) do
+  name { 'client' }
+  protected { true }
+end
+
+Role.blueprint do
+  name { Sham.name }
+  protected { false }
+end
+
 ## User blueprints.
 
 # Will be used mostly for controller testing of a user logging into
@@ -55,19 +71,19 @@ User.blueprint(:admin) do
   email { 'admin@test.com' }
   password { 'testing' }
   password_confirmation { 'testing' }
-  roles { ['admin'] }
+  roles { [ Role.make(:admin), Role.make(:client) ] }
 end
 
-User.blueprint(:user) do
+User.blueprint(:client) do
   email { 'user@test.com' }
   password { 'testing' }
   password_confirmation { 'testing' }
-  roles { ['user'] }
+  roles { [ Role.make(:client) ] }
 end
 
 User.blueprint do
   email { Sham.email }
   password { 'testing' }
   password_confirmation { 'testing' }
-  roles { Sham.group }
+  roles { [ Role.make(:client), Role.make ] }
 end

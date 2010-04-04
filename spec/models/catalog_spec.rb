@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Catalog do
   before do
-    @root_catalog = Catalog.make(:root)
+    @root_catalog = Catalog.new(Catalog.plan(:root))
+    @root_catalog.save(:validate => false)
   end
   
   it "should create a new catalog" do
