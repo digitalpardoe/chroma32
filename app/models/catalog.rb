@@ -2,7 +2,7 @@ class Catalog < ActiveRecord::Base
   ROOT_NAME = "root"
   
   validates_presence_of :name
-  validates_exclusion_of :name, :in => ROOT_NAME, :message => "is reserved"
+  validates_exclusion_of :name, :in => ROOT_NAME, :message => "is reserved", :if => Proc.new { |catalog| catalog.name }
   
   belongs_to :catalogs
   has_many :catalogs, :dependent => :destroy
@@ -38,14 +38,16 @@ class Catalog < ActiveRecord::Base
   
   private
   def generate_complex_name
-    catalog = self.catalog
-    complex_name = [ self.name ]
+    if self.name && self.name != ROOT_NAME
+      catalog = self.catalog
+      complex_name = [ self.name ]
     
-    while (catalog.name != ROOT_NAME)
-      complex_name << catalog.name
-      catalog = catalog.catalog
+      while (catalog.name != ROOT_NAME)
+        complex_name << catalog.name
+        catalog = catalog.catalog
+      end
+    
+      self.complex_name = complex_name.reverse.join(" - ")
     end
-    
-    self.complex_name = complex_name.reverse.join(" - ")
   end
 end
