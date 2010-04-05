@@ -9,17 +9,10 @@ Chroma32::Application.routes.draw do |map|
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
-  match 'catalogs/:catalog_id/documents/download/:id(.:format)' => 'documents#download', :as => :download_catalog_document
-  match "theme/:resource/:filename(.:format)" => "themes#show", :as => :theme_resource
   
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :users
-  resources :roles
   resource :user_session, :only => [:new, :create, :destroy]
-  resources :events
-  resources :themes, :only => [:index, :update]
-  resources :settings, :only => [:index, :update]
 
   # Sample resource route with options:
   #   resources :products do
@@ -38,10 +31,6 @@ Chroma32::Application.routes.draw do |map|
   #     resources :comments, :sales
   #     resource :seller
   #   end
-  resources :catalogs, :only => [:index, :show, :edit, :update, :destroy] do
-    resources :documents, :except => [:index]
-    resource :catalog, :only => [:create, :new]
-  end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do
@@ -59,6 +48,20 @@ Chroma32::Application.routes.draw do |map|
   #   end
   namespace :admin do
     root :to => "admin#index"
+    
+    match 'catalogs/:catalog_id/documents/download/:id(.:format)' => 'documents#download', :as => :download_catalog_document
+    match "theme/:resource/:filename(.:format)" => "themes#show", :as => :theme_resource
+    
+    resources :users
+    resources :roles
+    resources :events
+    resources :themes, :only => [:index, :update]
+    resources :settings, :only => [:index, :update]
+    
+    resources :catalogs, :only => [:index, :show, :edit, :update, :destroy] do
+      resources :documents, :except => [:index]
+      resource :catalog, :only => [:create, :new]
+    end
   end
 
   # You can have the root of your site routed with "root"
