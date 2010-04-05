@@ -1,7 +1,6 @@
 class Document < ActiveRecord::Base
   validates_presence_of :document, :if => Proc.new { |document| document.signature == nil }
-  validates_presence_of :name, :size, :content_type, :signature, :catalog_id, :public, :if => Proc.new { |document| document.document != nil }
-  validates_uniqueness_of :name, :scope => [:catalog_id]
+  validates_presence_of :name, :size, :content_type, :signature, :catalog_id, :if => Proc.new { |document| document.document != nil }
   
   belongs_to :catalog
     
@@ -11,6 +10,7 @@ class Document < ActiveRecord::Base
   attr_accessor :document
   
   DOCUMENT_CACHE = File.join(Rails.root, "tmp", "documents")
+  THUMBNAIL_CACHE = File.join(DOCUMENT_CACHE, "thumbnails")
   
   def file
     File.join(DOCUMENT_CACHE, "#{self.signature}")
@@ -33,12 +33,30 @@ class Document < ActiveRecord::Base
   end
   
   def save_to_disk
+    unless File.exists?(DOCUMENT_CACHE)
+      FileUtils.mkdir_p(DOCUMENT_CACHE)
+    end
+    
     File.open(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), "wb") { |f| f.write(document.read) }
     self.signature = MD5.new(IO.read(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"))).hexdigest
     
     self.size = File.size(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"))
     
-    File.move(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), File.join(DOCUMENT_CACHE, "#{self.signature}"))
+    final_file = File.join(DOCUMENT_CACHE, "#{self.signature}")
+    
+    File.move(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), final_file)
+    
+    if self.content_type =~ /image/
+      unless File.exists?(THUMBNAIL_CACHE)
+        FileUtils.mkdir_p(THUMBNAIL_CACHE)
+      end
+      
+      ImageScience.with_image(final_file) do |img|
+        img.cropped_thumbnail(100) do |thumb|
+          thumb.save File.join(THUMBNAIL_CACHE, self.signature)
+        end
+			end
+    end
   end
   
   def check_duplicate_names
@@ -63,6 +81,10 @@ class Document < ActiveRecord::Base
   def cleanup_document
     if Document.where(:signature => self.signature).count(:id) <= 1
       File.delete(File.join(DOCUMENT_CACHE, "#{self.signature}"))
+      
+      if self.content_type =~ /image/
+        File.delete(File.join(THUMBNAIL_CACHE, "#{self.signature}"))
+      end
     end
   end
 end
