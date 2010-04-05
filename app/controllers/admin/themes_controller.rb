@@ -1,4 +1,6 @@
 class Admin::ThemesController < AdminController
+  prepend_before_filter :show, :only => :show
+  
   def index
     @themes = Theme.all
     unauthorized! if cannot? :index, @themes
