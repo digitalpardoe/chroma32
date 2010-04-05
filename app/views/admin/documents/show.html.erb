@@ -27,7 +27,7 @@
 <% if @document.content_type =~ /image/ %>
   <p>
     <b>Image data:</b><br />
-    <%= image_tag file_download_path(@catalog.id, 'thumbnail', @document.name, @document.extension), :title => @document.name, :alt => @document.name %>
+    <%= image_tag thumbnail_path(@document), :title => @document.name, :alt => @document.name %>
   </p>
 <% end %>
 

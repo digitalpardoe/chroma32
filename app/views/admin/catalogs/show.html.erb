@@ -39,7 +39,7 @@
     <td><%= document.size %></td>
     <td><%= document.content_type %></td>
     <td><%= document.signature %></td>
-    <td><%= link_to 'Download', file_download_path(@catalog, 'file', document.name, document.extension) %></td>
+    <td><%= link_to 'Download', file_path(document) %></td>
     <td><%= link_to 'Show', admin_catalog_document_path(@catalog, document) %></td>
     <td><%= link_to 'Edit', edit_admin_catalog_document_path(@catalog, document) %></td>
     <td><%= link_to 'Destroy', admin_catalog_document_path(@catalog, document), :confirm => 'Are you sure?', :method => :delete %></td>

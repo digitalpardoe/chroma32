@@ -13,6 +13,14 @@ module ApplicationHelper
     Setting.application.value("name")
   end
   
+  def file_path(document)
+    document_path(document, 'file')
+  end
+  
+  def thumbnail_path(document)
+    document_path(document, 'thumbnail')
+  end
+  
   private
   def build_resource_tags(resource)
     result = ""
@@ -21,5 +29,9 @@ module ApplicationHelper
       result << stylesheet_link_tag(theme_resource_path("#{resource}", file[:name], file[:extension]))
     end
     result
+  end
+  
+  def document_path(document, type)
+    file_download_path(document.catalog.id, type, document.name, document.extension)
   end
 end
