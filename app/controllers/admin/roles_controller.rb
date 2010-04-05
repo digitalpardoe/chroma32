@@ -2,7 +2,7 @@ class Admin::RolesController < AdminController
   load_and_authorize_resource
   
   def index
-    @roles = Role.visible.all
+    @roles = Role.visible
     
     respond_to do |format|
       format.html
