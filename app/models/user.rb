@@ -9,6 +9,12 @@ class User < ActiveRecord::Base
   
   before_validation :add_default_role, :on => :create
   
+  def destroy
+    unless self.role?(:admin) && Role.where(:name => 'admin').count <= 1
+      super
+    end
+  end
+  
   private
   def add_default_role
     self.roles << Role.where(:name => 'client').limit(1).first
