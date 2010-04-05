@@ -24,7 +24,7 @@ class Ability
       
       can :read, Document do |document_record|
         can_access = false
-        
+                
         document_record.catalog.events.each do |event_record|
           can_access = ((event_record.roles & user.roles).size > 0) unless can_access
         end

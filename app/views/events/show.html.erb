@@ -1,0 +1,17 @@
+<h1>Listing documents</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Thumbnail</th>
+    <th></th>
+  </tr>
+
+  <% @documents.each do |document| %>
+    <tr>
+      <td><%= document.name %></td>
+      <td><%= image_tag thumbnail_path(document) %></td>
+      <td><%= link_to 'Download', file_path(document) %></td>
+    </tr>
+  <% end %>
+</table>

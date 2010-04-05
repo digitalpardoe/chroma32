@@ -1,0 +1,27 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Thumbnail</th>
+    <th></th>
+  </tr>
+
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.name %></td>
+      <td><%= event.date %></td>
+      <td><%= event.location %></td>
+      <td><%= event.description %></td>
+      <td><%= image_tag thumbnail_path(event.catalogs.first.documents.first) %></td>
+      <td><%= link_to 'Show', event_path(event) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New event', new_admin_event_path %>
