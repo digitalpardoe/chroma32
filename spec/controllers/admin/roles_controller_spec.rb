@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe RolesController do
+describe Admin::RolesController do
 
 end
