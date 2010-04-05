@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Chroma32</title>
+	<%= stylesheet_link_tag :all %>
+	<%= javascript_include_tag :defaults %>
+	<%= csrf_meta_tag %>
+</head>
+
+<body>
+  <header>
+    <h1>Chroma32</h1>
+  </header>
+  
+  <nav>
+    <%= link_to "Catalogs", catalogs_path %> |
+    <%= link_to "Events", events_path %> | 
+    <%= link_to "Roles", roles_path %> | 
+    <%= link_to "Users", users_path %> | 
+    <%= link_to "Settings", settings_path %> | 
+    <%= link_to "Themes", themes_path %> | 
+    <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+  </nav>
+  
+  <% flash.each do |key, msg| %>
+		<%= content_tag :div, content_tag(:p, msg), :id => key %>
+	<% end %>
+	
+	<%= yield %>
+	
+	<footer>
+	  <p>&copy; Alex Pardoe, 2010.</p>
+	</footer>
+</body>
+
+</html>

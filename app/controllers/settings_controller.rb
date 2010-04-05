@@ -1,4 +1,4 @@
-class SettingsController < ApplicationController
+class SettingsController < AdminController
   def index
     @settings = Setting.application.visible.all
     unauthorized! if cannot? :index, @settings

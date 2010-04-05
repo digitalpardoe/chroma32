@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class EventsController < AdminController
   load_and_authorize_resource
   
   def index

@@ -1,4 +1,4 @@
-class ThemesController < ApplicationController
+class ThemesController < AdminController
   def index
     @themes = Theme.all
     unauthorized! if cannot? :index, @themes
