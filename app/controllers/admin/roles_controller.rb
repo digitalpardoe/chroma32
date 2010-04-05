@@ -1,4 +1,4 @@
-class RolesController < AdminController
+class Admin::RolesController < AdminController
   load_and_authorize_resource
   
   def index
@@ -27,7 +27,7 @@ class RolesController < AdminController
   def create
     respond_to do |format|
       if @role.save
-        format.html { redirect_to(@role, :notice => 'Role was successfully created.') }
+        format.html { redirect_to(admin_role_path(@role), :notice => 'Role was successfully created.') }
       else
         format.html { render :action => "new" }
       end
@@ -37,7 +37,7 @@ class RolesController < AdminController
   def update
     respond_to do |format|
       if @role.update_attributes(params[:role])
-        format.html { redirect_to(@role, :notice => 'Role was successfully updated.') }
+        format.html { redirect_to(admin_role_path(@role), :notice => 'Role was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end
@@ -48,7 +48,7 @@ class RolesController < AdminController
     @role.destroy
 
     respond_to do |format|
-      format.html { redirect_to(roles_url) }
+      format.html { redirect_to(admin_roles_path) }
     end
   end
 end

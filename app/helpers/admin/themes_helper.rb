@@ -1,2 +1,2 @@
-module ThemesHelper
+module Admin::ThemesHelper
 end

@@ -1,4 +1,4 @@
-class SettingsController < AdminController
+class Admin::SettingsController < AdminController
   def index
     @settings = Setting.application.visible.all
     unauthorized! if cannot? :index, @settings
@@ -10,9 +10,9 @@ class SettingsController < AdminController
     
     respond_to do |format|
       if @settings.save
-        format.html { redirect_to(settings_path, :notice => 'Settings were successfully changed.') }
+        format.html { redirect_to(admin_settings_path, :notice => 'Settings were successfully changed.') }
       else
-        format.html { redirect_to(settings_path, :notice => 'Settings were not successfully changed.') }
+        format.html { redirect_to(admin_settings_path, :notice => 'Settings were not successfully changed.') }
       end
     end
   end

@@ -1,2 +1,2 @@
-module RolesHelper
+module Admin::RolesHelper
 end

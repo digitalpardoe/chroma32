@@ -1,2 +1,2 @@
-module CatalogsHelper
+module Admin::CatalogsHelper
 end

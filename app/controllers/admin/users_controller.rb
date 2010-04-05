@@ -1,4 +1,4 @@
-class UsersController < AdminController
+class Admin::UsersController < AdminController
   load_and_authorize_resource
 
   def index
@@ -27,7 +27,7 @@ class UsersController < AdminController
   def create
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+        format.html { redirect_to(admin_user_path(@user), :notice => 'User was successfully created.') }
       else
         format.html { render :action => "new" }
       end
@@ -37,7 +37,7 @@ class UsersController < AdminController
   def update
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+        format.html { redirect_to(admin_user_path(@user), :notice => 'User was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end
@@ -48,7 +48,7 @@ class UsersController < AdminController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to(users_url) }
+      format.html { redirect_to(admin_users_path) }
     end
   end
 end

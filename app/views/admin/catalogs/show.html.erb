@@ -11,9 +11,9 @@
 <% @catalog.catalogs.each do |catalog| %>
   <tr>
     <td><%= catalog.name %></td>
-    <td><%= link_to 'Show', catalog %></td>
-    <td><%= link_to 'Edit', edit_catalog_path(catalog) %></td>
-    <td><%= link_to 'Destroy', catalog, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', admin_catalog_path(catalog) %></td>
+    <td><%= link_to 'Edit', edit_admin_catalog_path(catalog) %></td>
+    <td><%= link_to 'Destroy', admin_catalog_path(catalog), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -39,10 +39,10 @@
     <td><%= document.size %></td>
     <td><%= document.content_type %></td>
     <td><%= document.signature %></td>
-    <td><%= link_to 'Download', download_catalog_document_path(@catalog, document.name, document.extension) %></td>
-    <td><%= link_to 'Show', catalog_document_path(@catalog, document) %></td>
-    <td><%= link_to 'Edit', edit_catalog_document_path(@catalog, document) %></td>
-    <td><%= link_to 'Destroy', catalog_document_path(@catalog, document), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Download', admin_download_catalog_document_path(@catalog, document.name, document.extension) %></td>
+    <td><%= link_to 'Show', admin_catalog_document_path(@catalog, document) %></td>
+    <td><%= link_to 'Edit', edit_admin_catalog_document_path(@catalog, document) %></td>
+    <td><%= link_to 'Destroy', admin_catalog_document_path(@catalog, document), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -50,7 +50,7 @@
 <br />
 
 <% if @catalog.catalog_id %>
-  <%= link_to 'Back', catalog_path(@catalog.catalog) %> | 
+  <%= link_to 'Back', admin_catalog_path(@catalog.catalog) %> | 
 <% end %>
 
-<%= link_to 'New catalog', new_catalog_catalog_path(@catalog) %> | <%= link_to 'New document', new_catalog_document_path(@catalog) %>
+<%= link_to 'New catalog', new_admin_catalog_catalog_path(@catalog) %> | <%= link_to 'New document', new_admin_catalog_document_path(@catalog) %>

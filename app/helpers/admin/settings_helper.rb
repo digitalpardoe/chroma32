@@ -1,2 +1,2 @@
-module SettingsHelper
+module Admin::SettingsHelper
 end

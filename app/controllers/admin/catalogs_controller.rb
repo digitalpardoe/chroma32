@@ -1,4 +1,4 @@
-class CatalogsController < AdminController
+class Admin::CatalogsController < AdminController
   load_and_authorize_resource
   
   def index
@@ -29,7 +29,7 @@ class CatalogsController < AdminController
     
     respond_to do |format|
       if @catalog.save
-        format.html { redirect_to(@catalog, :notice => 'Catalog was successfully created.') }
+        format.html { redirect_to(admin_catalog_path(@catalog), :notice => 'Catalog was successfully created.') }
       else
         format.html { render :action => "new" }
       end
@@ -39,7 +39,7 @@ class CatalogsController < AdminController
   def update
     respond_to do |format|
       if @catalog.update_attributes(params[:catalog])
-        format.html { redirect_to(@catalog.catalog, :notice => 'Catalog was successfully updated.') }
+        format.html { redirect_to(admin_catalog_path(@catalog.catalog), :notice => 'Catalog was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end
@@ -50,7 +50,7 @@ class CatalogsController < AdminController
     @catalog.destroy
     
     respond_to do |format|
-      format.html { redirect_to(@catalog.catalog) }
+      format.html { redirect_to(admin_catalog_path(@catalog.catalog)) }
     end
   end
 end

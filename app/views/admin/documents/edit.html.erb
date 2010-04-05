@@ -1,6 +1,6 @@
 <h1>Editing document</h1>
 
-<% form_for(@document, :url => catalog_document_path) do |f| %>
+<% form_for(@document, :url => admin_catalog_document_path) do |f| %>
   <%= f.error_messages %>
 
   <div class="field">
@@ -13,5 +13,5 @@
   
 <% end %>
 
-<%= link_to 'Show', catalog_document_path(@document) %> |
-<%= link_to 'Back', catalog_path(@document.catalog) %>
+<%= link_to 'Show', admin_catalog_document_path(@document) %> |
+<%= link_to 'Back', admin_catalog_path(@document.catalog) %>

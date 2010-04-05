@@ -5,6 +5,7 @@ Chroma32::Application.routes.draw do |map|
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
+  match "theme/:resource/:filename(.:format)" => "admin/themes#show", :as => :theme_resource
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
@@ -49,8 +50,7 @@ Chroma32::Application.routes.draw do |map|
   namespace :admin do
     root :to => "admin#index"
     
-    match 'catalogs/:catalog_id/documents/download/:id(.:format)' => 'documents#download', :as => :download_catalog_document
-    match "theme/:resource/:filename(.:format)" => "themes#show", :as => :theme_resource
+    match 'catalogs/:catalog_id/documents/download/:id(.:format)' => 'admin/documents#download', :as => :download_catalog_document
     
     resources :users
     resources :roles

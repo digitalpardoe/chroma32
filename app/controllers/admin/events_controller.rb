@@ -1,4 +1,4 @@
-class EventsController < AdminController
+class Admin::EventsController < AdminController
   load_and_authorize_resource
   
   def index
@@ -27,7 +27,7 @@ class EventsController < AdminController
   def create
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
+        format.html { redirect_to(admin_event_path(@event), :notice => 'Event was successfully created.') }
       else
         format.html { render :action => "new" }
       end
@@ -37,7 +37,7 @@ class EventsController < AdminController
   def update
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
+        format.html { redirect_to(admin_event_path(@event), :notice => 'Event was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end
@@ -48,7 +48,7 @@ class EventsController < AdminController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to(events_url) }
+      format.html { redirect_to(admin_events_path) }
     end
   end
 end

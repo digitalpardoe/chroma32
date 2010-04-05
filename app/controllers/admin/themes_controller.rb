@@ -1,4 +1,4 @@
-class ThemesController < AdminController
+class Admin::ThemesController < AdminController
   def index
     @themes = Theme.all
     unauthorized! if cannot? :index, @themes
@@ -14,9 +14,9 @@ class ThemesController < AdminController
     
     respond_to do |format|
       if @theme.save
-        format.html { redirect_to(themes_path, :notice => 'Theme was successfully changed.') }
+        format.html { redirect_to(admin_themes_path, :notice => 'Theme was successfully changed.') }
       else
-        format.html { redirect_to(themes_path, :notice => 'Theme was not successfully changed.') }
+        format.html { redirect_to(admin_themes_path, :notice => 'Theme was not successfully changed.') }
       end
     end
   end

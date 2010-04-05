@@ -1,2 +1,2 @@
-module DocumentsHelper
+module Admin::DocumentsHelper
 end

@@ -1,23 +1,21 @@
-<% form_for(@user) do |f| %>
-  <%= f.error_messages %>
+<%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= collection_select :user, :role_ids, Role.visible.all, :id, :name, {}, :multiple => true, :name => 'user[role_ids][]' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="field">
+  <%= f.label :email %><br />
+  <%= f.text_field :email %>
+</div>
+<div class="field">
+  <%= f.label :password %><br />
+  <%= f.password_field :password %>
+</div>
+<div class="field">
+  <%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %>
+</div>
+<div class="field">
+  <%= f.label :role %><br />
+  <%= collection_select :user, :role_ids, Role.visible.all, :id, :name, {}, :multiple => true, :name => 'user[role_ids][]' %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>

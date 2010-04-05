@@ -1,4 +1,4 @@
-class DocumentsController < AdminController
+class Admin::DocumentsController < AdminController
   # This before filter prevents CanCan's automatic loading of resources from
   # breaking the download action, if this isn't here we get an error.
   before_filter :download, :only => :download
@@ -29,7 +29,7 @@ class DocumentsController < AdminController
     
     respond_to do |format|
       if @document.save
-        format.html { redirect_to(@catalog, :notice => 'Document was successfully uploaded.') }
+        format.html { redirect_to(admin_catalog_path(@catalog), :notice => 'Document was successfully uploaded.') }
       else
         format.html { render :action => "new" }
       end
@@ -39,7 +39,7 @@ class DocumentsController < AdminController
   def update
     respond_to do |format|
       if @document.update_attributes(params[:document])
-        format.html { redirect_to(@document.catalog, :notice => 'Document was successfully updated.') }
+        format.html { redirect_to(admin_catalog_path(@document.catalog), :notice => 'Document was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end
@@ -50,7 +50,7 @@ class DocumentsController < AdminController
     @document.destroy
     
     respond_to do |format|
-      format.html { redirect_to(catalog_path(params[:catalog_id])) }
+      format.html { redirect_to(admin_catalog_path(params[:catalog_id])) }
     end
   end
   

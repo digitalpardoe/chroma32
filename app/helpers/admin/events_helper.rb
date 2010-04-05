@@ -1,2 +1,2 @@
-module EventsHelper
+module Admin::EventsHelper
 end

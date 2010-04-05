@@ -1,6 +1,6 @@
 <h1>New document</h1>
 
-<% form_for(@document, :url => catalog_documents_path, :html => { :multipart => true }) do |f| %>
+<% form_for(@document, :url => admin_catalog_documents_path, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 
   <div class="field">
@@ -12,4 +12,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', catalog_path(@catalog) %>
+<%= link_to 'Back', admin_catalog_path(@catalog) %>
