@@ -10,7 +10,13 @@ class UserSessionsController < ApplicationController
   def create
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_to(root_url, :notice => 'UserSession was successfully created.') }
+        format.html do
+          if @user_session.record.role?(:admin)
+            redirect_to(admin_root_path, :notice => 'User Session was successfully created.')
+          else
+            redirect_to(root_path, :notice => 'User Session was successfully created.')
+          end
+        end
       else
         format.html { render :action => "new" }
       end
