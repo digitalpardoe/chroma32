@@ -9,14 +9,13 @@
 catalog = Catalog.new( { :name => 'root' } )
 catalog.save(:validate => false)
 
-Setting.create(:resource => RESOURCE_ID, :key => 'theme', :value => 'chroma32')
+[ { :key => 'theme', :value => 'chroma32' }, { :key => 'name', :value => 'Chroma32' }, { :key => 'url', :value => 'http://chroma32.com/' } ].each do |setting_pair|
+  setting = Setting.new( { :resource => RESOURCE_ID, :key => setting_pair[:key], :value => setting_pair[:value] } )
+  setting.save
+end
 
-admin_role = Role.new
-admin_role.name = 'admin'
-admin_role.hidden = true
-admin_role.save
-
-client_role = Role.new
-client_role.name = 'client'
-client_role.hidden = true
-client_role.save
+%w( admin client ).each do |role_name|
+  role = Role.new( { :name => role_name } )
+  role.hidden = true
+  role.save
+end
