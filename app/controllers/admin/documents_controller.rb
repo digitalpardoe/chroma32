@@ -56,7 +56,7 @@ class Admin::DocumentsController < AdminController
   
   def download
     @document = Document.where(:name => params[:id], :extension => params[:format], :catalog_id => params[:catalog_id]).limit(1).first
-    unauthorized! if cannot? :read, @document
+    unauthorized! if ((cannot? :read, @document) && !@document.public)
     
     send_file @document.file, :type => @document.content_type, :disposition => "attachment", :filename => "#{params[:id]}.#{params[:format]}", :stream => false
   end

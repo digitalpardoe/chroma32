@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100405094456) do
+ActiveRecord::Schema.define(:version => 20100405131651) do
 
   create_table "catalogs", :force => true do |t|
     t.string   "name",         :null => false
@@ -27,14 +27,15 @@ ActiveRecord::Schema.define(:version => 20100405094456) do
   add_index "catalogs_events", ["catalog_id", "event_id"], :name => "index_catalogs_events_on_catalog_id_and_event_id"
 
   create_table "documents", :force => true do |t|
-    t.string   "name",         :null => false
+    t.string   "name",                            :null => false
     t.string   "extension"
-    t.integer  "size",         :null => false
-    t.integer  "catalog_id",   :null => false
+    t.integer  "size",                            :null => false
+    t.integer  "catalog_id",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "content_type", :null => false
-    t.string   "signature",    :null => false
+    t.string   "content_type",                    :null => false
+    t.string   "signature",                       :null => false
+    t.boolean  "public",       :default => false
   end
 
   create_table "events", :force => true do |t|
