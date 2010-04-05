@@ -48,17 +48,17 @@ end
 
 Role.blueprint(:admin) do
   name { 'admin' }
-  protected { true }
+  hidden { true }
 end
 
 Role.blueprint(:client) do
   name { 'client' }
-  protected { true }
+  hidden { true }
 end
 
 Role.blueprint do
   name { Sham.name }
-  protected { false }
+  hidden { false }
 end
 
 ## User blueprints.

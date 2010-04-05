@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100403212922) do
+ActiveRecord::Schema.define(:version => 20100405094020) do
 
   create_table "catalogs", :force => true do |t|
     t.string   "name",         :null => false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20100403212922) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
-    t.boolean  "protected",  :default => false
+    t.boolean  "hidden",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

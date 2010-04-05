@@ -5,9 +5,9 @@ class Role < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of :name
   
-  scope :visible, where(:protected => false)
-  scope :hidden, where(:protected => true)
+  scope :visible, where(:hidden => false)
+  scope :hidden, where(:hidden => true)
   
-  attr_protected :protected
-  attr_readonly :protected
+  attr_protected :hidden
+  attr_readonly :hidden
 end
