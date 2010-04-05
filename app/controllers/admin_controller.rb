@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   layout "admin"
   
-  before_filter :authorize
+  before_filter :authorize, :except => :download
   
   def index
     
