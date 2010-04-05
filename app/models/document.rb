@@ -16,6 +16,14 @@ class Document < ActiveRecord::Base
     File.join(DOCUMENT_CACHE, "#{self.signature}")
   end
   
+  def thumbnail
+    File.join(THUMBNAIL_CACHE, "#{self.signature}")
+  end
+  
+  def image?
+    self.content_type =~ /image/ ? true : false
+  end
+  
   private
   def persist_document
     return if !document
@@ -30,6 +38,10 @@ class Document < ActiveRecord::Base
     save_to_disk
     check_duplicate_names
     register_mime_type
+    
+    if self.image?
+      generate_thumbnail
+    end
   end
   
   def save_to_disk
@@ -45,18 +57,6 @@ class Document < ActiveRecord::Base
     final_file = File.join(DOCUMENT_CACHE, "#{self.signature}")
     
     File.move(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), final_file)
-    
-    if self.content_type =~ /image/
-      unless File.exists?(THUMBNAIL_CACHE)
-        FileUtils.mkdir_p(THUMBNAIL_CACHE)
-      end
-      
-      ImageScience.with_image(final_file) do |img|
-        img.cropped_thumbnail(100) do |thumb|
-          thumb.save File.join(THUMBNAIL_CACHE, self.signature)
-        end
-			end
-    end
   end
   
   def check_duplicate_names
@@ -78,11 +78,23 @@ class Document < ActiveRecord::Base
     end
   end
   
+  def generate_thumbnail
+    unless File.exists?(THUMBNAIL_CACHE)
+      FileUtils.mkdir_p(THUMBNAIL_CACHE)
+    end
+    
+    ImageScience.with_image(final_file) do |img|
+      img.cropped_thumbnail(100) do |thumb|
+        thumb.save File.join(THUMBNAIL_CACHE, self.signature)
+      end
+		end
+  end
+  
   def cleanup_document
     if Document.where(:signature => self.signature).count(:id) <= 1
       File.delete(File.join(DOCUMENT_CACHE, "#{self.signature}"))
       
-      if self.content_type =~ /image/
+      if self.image?
         File.delete(File.join(THUMBNAIL_CACHE, "#{self.signature}"))
       end
     end
