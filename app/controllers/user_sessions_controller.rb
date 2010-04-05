@@ -27,7 +27,7 @@ class UserSessionsController < ApplicationController
     current_user_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to(root_url) }
+      format.html { redirect_to(root_path) }
     end
   end
 end
