@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100405094020) do
+ActiveRecord::Schema.define(:version => 20100405094456) do
 
   create_table "catalogs", :force => true do |t|
     t.string   "name",         :null => false
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20100405094020) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "hidden",     :default => false
   end
 
   create_table "users", :force => true do |t|

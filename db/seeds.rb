@@ -9,8 +9,9 @@
 catalog = Catalog.new( { :name => 'root' } )
 catalog.save(:validate => false)
 
-[ { :key => 'theme', :value => 'chroma32' }, { :key => 'name', :value => 'Chroma32' }, { :key => 'url', :value => 'http://chroma32.com/' } ].each do |setting_pair|
-  setting = Setting.new( { :resource => RESOURCE_ID, :key => setting_pair[:key], :value => setting_pair[:value] } )
+[ { :key => 'theme', :value => 'chroma32', :hidden => true }, { :key => 'name', :value => 'Chroma32', :hidden => false }, { :key => 'url', :value => 'http://chroma32.com/', :hidden => false } ].each do |setting_hash|
+  setting = Setting.new( { :resource => RESOURCE_ID, :key => setting_hash[:key], :value => setting_hash[:value] } )
+  setting.hidden = setting_hash[:hidden]
   setting.save
 end
 

@@ -19,6 +19,7 @@ Chroma32::Application.routes.draw do |map|
   resource :user_session, :only => [:new, :create, :destroy]
   resources :events
   resources :themes, :only => [:index, :update]
+  resources :settings, :only => [:index, :update]
 
   # Sample resource route with options:
   #   resources :products do
