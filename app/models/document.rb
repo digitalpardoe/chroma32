@@ -54,9 +54,7 @@ class Document < ActiveRecord::Base
     
     self.size = File.size(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"))
     
-    final_file = File.join(DOCUMENT_CACHE, "#{self.signature}")
-    
-    File.move(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), final_file)
+    File.move(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), File.join(DOCUMENT_CACHE, "#{self.signature}"))
   end
   
   def check_duplicate_names
@@ -83,7 +81,7 @@ class Document < ActiveRecord::Base
       FileUtils.mkdir_p(THUMBNAIL_CACHE)
     end
     
-    ImageScience.with_image(final_file) do |img|
+    ImageScience.with_image(File.join(DOCUMENT_CACHE, "#{self.signature}")) do |img|
       img.cropped_thumbnail(100) do |thumb|
         thumb.save File.join(THUMBNAIL_CACHE, self.signature)
       end
