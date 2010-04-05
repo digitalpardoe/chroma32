@@ -9,6 +9,10 @@ module ApplicationHelper
     result << build_resource_tags("javascripts").html_safe
   end
   
+  def application_name
+    Setting.application.value("name")
+  end
+  
   private
   def build_resource_tags(resource)
     result = ""
