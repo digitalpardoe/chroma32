@@ -8,7 +8,7 @@ class Ability
       
       can :manage, :all
       
-    else
+    elsif user.role? :client
       
       can :manage, UserSession
       
@@ -31,6 +31,10 @@ class Ability
         
         can_access
       end
+      
+    else
+      
+      can :create, UserSession
       
     end
     
