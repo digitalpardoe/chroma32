@@ -9,7 +9,7 @@
 catalog = Catalog.new( { :name => 'root' } )
 catalog.save(:validate => false)
 
-[ { :key => 'theme', :value => 'chroma32', :hidden => true }, { :key => 'name', :value => 'Chroma32', :hidden => false }, { :key => 'url', :value => 'http://chroma32.com/', :hidden => false } ].each do |setting_hash|
+[ { :key => 'theme', :value => 'chroma32', :hidden => true }, { :key => 'name', :value => 'Chroma32', :hidden => false }, { :key => 'url', :value => 'http://chroma32.com/', :hidden => false }, { :key => 'root', :value => 'user_sessions#new', :hidden => false } ].each do |setting_hash|
   setting = Setting.new( { :resource => RESOURCE_ID, :key => setting_hash[:key], :value => setting_hash[:value] } )
   setting.hidden = setting_hash[:hidden]
   setting.save
