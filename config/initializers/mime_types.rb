@@ -5,10 +5,6 @@
 # Mime::Type.register_alias "text/html", :iphone
 
 begin
-  Document.all
-rescue
-
-else
   unless File.basename( $0 ) == "rake"
     registered_types = []
     Document.all.each do |document|
@@ -18,6 +14,8 @@ else
       end
     end
   end
+rescue
+
 end
 
 # Registering useful MIME types for theming.

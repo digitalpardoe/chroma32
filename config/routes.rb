@@ -66,7 +66,11 @@ Chroma32::Application.routes.draw do |map|
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
-  root :to => Setting.application.value("root")
+  begin
+    root :to => Setting.application.value("root")
+  rescue
+    root :to => "user_sessions#new"
+  end
 
   # See how all your routes lay out with "rake routes"
 
