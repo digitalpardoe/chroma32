@@ -20,3 +20,7 @@ end
   role.hidden = true
   role.save
 end
+
+admin = User.new( { :email => 'example@example.com', :password => 'changeme', :password_confirmation => 'changeme' } )
+admin.roles = [ Role.where(:name => 'admin').first ]
+admin.save
