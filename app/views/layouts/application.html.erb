@@ -4,8 +4,13 @@
 <head>
 	<meta charset="utf-8" />
 	<title><%= application_name %></title>
+	
+	<%= plugin_stylesheet_link_tag %>
 	<%= themed_stylesheet_link_tag :all %>
+	
+	<%= plugin_javascript_include_tag %>
 	<%= themed_javascript_include_tag :defaults %>
+	
 	<%= csrf_meta_tag %>
 </head>
 
