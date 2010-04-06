@@ -48,7 +48,11 @@ module ApplicationHelper
     
     PLUGIN_CONFIG.each do |key, value|
       value['links'][type].each do |link|
-        links << link_to(link['label'], eval(link['generator'])).html_safe
+        if !link['secure']
+          links << link_to(link['label'], eval(link['generator'])).html_safe
+        elsif link['secure'] && current_user
+          links << link_to(link['label'], eval(link['generator'])).html_safe
+        end
       end
     end
     

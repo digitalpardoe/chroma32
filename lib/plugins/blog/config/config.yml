@@ -5,6 +5,8 @@ links:
   user:
     - label: Blog
       generator: articles_path
+      secure: false
   admin:
     - label: Articles
       generator: admin_articles_path
+      secure: true
