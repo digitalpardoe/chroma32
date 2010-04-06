@@ -18,7 +18,7 @@ module Plugin
     end
     
     def create_migration_file
-      migration_template 'articles.rb', 'db/migrate/create_articles.rb'
+      migration_template 'create_articles.rb', 'db/migrate/create_articles.rb'
     end
   end
 end
