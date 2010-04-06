@@ -30,6 +30,8 @@
       <% if current_user.role?(:admin) %>
         | <%= link_to "Admin", admin_root_path %>
       <% end %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path %>
     <% end %>
   </nav>
   
