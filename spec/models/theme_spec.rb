@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Role do
+describe Theme do
 
 end
