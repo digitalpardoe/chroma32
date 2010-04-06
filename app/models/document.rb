@@ -24,6 +24,11 @@ class Document < ActiveRecord::Base
     self.content_type =~ /image/ ? true : false
   end
   
+  PLUGIN_CONFIG.each_key do |plugin|
+    model_extension = File.join(PLUGINS_DIR, plugin.to_s, 'app', 'models', 'extensions', 'document.rb')
+    eval (File.open(model_extension, "r").read) if File.exists?(model_extension)
+  end
+
   private
   def persist_document
     return if !document

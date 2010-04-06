@@ -16,30 +16,14 @@ class Ability
         user_record == user
       end
       
-      can :read, Event do |event_record|
-        if event_record
-          (event_record.roles & user.roles).size > 0
-        end
-      end
-      
-      can :read, Document do |document_record|
-        can_access = false
-                
-        document_record.catalog.events.each do |event_record|
-          can_access = ((event_record.roles & user.roles).size > 0) unless can_access
-        end
-        
-        can_access
-      end
-      
     else
       
       can :create, UserSession
       
     end
     
-    Dir.glob("#{PLUGINS_DIR}/*").each do |dir|
-      ability_config = File.join(dir, 'config', 'ability.rb')
+    PLUGIN_CONFIG.each_key do |plugin|
+      ability_config = File.join(PLUGINS_DIR, plugin.to_s, 'config', 'ability.rb')
       eval (File.open(ability_config, "r").read) if File.exists?(ability_config)
     end
   end

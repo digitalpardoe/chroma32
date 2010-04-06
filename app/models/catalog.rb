@@ -7,7 +7,6 @@ class Catalog < ActiveRecord::Base
   belongs_to :catalogs
   has_many :catalogs, :dependent => :destroy
   has_many :documents, :dependent => :destroy
-  has_and_belongs_to_many :events
   
   scope :sans_root, where("name != ?", ROOT_NAME)
   
@@ -34,6 +33,11 @@ class Catalog < ActiveRecord::Base
     else
       super
     end
+  end
+  
+  PLUGIN_CONFIG.each_key do |plugin|
+    model_extension = File.join(PLUGINS_DIR, plugin.to_s, 'app', 'models', 'extensions', 'catalog.rb')
+    eval (File.open(model_extension, "r").read) if File.exists?(model_extension)
   end
   
   private
