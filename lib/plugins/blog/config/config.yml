@@ -1,0 +1,10 @@
+plugin:
+  name: Blog
+  resource: com.chroma32.blog
+links:
+  user:
+    - label: Blog
+      generator: articles_path
+  admin:
+    - label: Articles
+      generator: admin_articles_path
