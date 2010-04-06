@@ -1,0 +1,12 @@
+plugin:
+  name: Event
+  resource: com.chroma32.event
+links:
+  user:
+    - label: Events
+      generator: events_path
+      secure: true
+  admin:
+    - label: Events
+      generator: admin_events_path
+      secure: true
