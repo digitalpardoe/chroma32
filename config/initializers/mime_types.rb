@@ -4,12 +4,18 @@
 # Mime::Type.register "text/richtext", :rtf
 # Mime::Type.register_alias "text/html", :iphone
 
-unless File.basename( $0 ) == "rake"
-  registered_types = []
-  Document.all.each do |document|
-    if !document.extension.blank? && !document.content_type.blank? && !registered_types.include?(document.extension)
-      Mime::Type.register document.content_type, document.extension.to_sym
-      registered_types << document.extension
+begin
+  Document.all
+rescue
+
+else
+  unless File.basename( $0 ) == "rake"
+    registered_types = []
+    Document.all.each do |document|
+      if !document.extension.blank? && !document.content_type.blank? && !registered_types.include?(document.extension)
+        Mime::Type.register document.content_type, document.extension.to_sym
+        registered_types << document.extension
+      end
     end
   end
 end
