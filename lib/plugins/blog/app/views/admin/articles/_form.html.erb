@@ -12,6 +12,10 @@
   <%= f.label :author %><br />
   <%= f.text_field :author %>
 </div>
+<div class="field">
+  <%= f.label :document %><br />
+  <%= collection_select :article, :document_id, Document.where(:public => true).where("content_type LIKE 'image%'").all, :id, :name, { :prompt => 'Select Image' } %>
+</div>
 <div class="actions">
   <%= f.submit %>
 </div>
