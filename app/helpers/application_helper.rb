@@ -44,14 +44,14 @@ module ApplicationHelper
   end
   
   def plugin_links(type)
-    links = ""
+    links = []
     
     PLUGIN_CONFIG.each do |key, value|
       value['links'][type].each do |link|
-        links << link_to(link['label'], eval(link['generator']))
+        links << link_to(link['label'], eval(link['generator'])).html_safe
       end
     end
     
-    links.html_safe
+    links
   end
 end
