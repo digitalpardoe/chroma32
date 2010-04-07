@@ -8,6 +8,8 @@ Sham.define do
   content_type(:unique => false) { rand(2) == 0 ? 'image/jpeg' : 'text/plain' }
   email { Faker::Internet.email }
   random_hash { MD5.new(rand(10000).to_s) }
+  value { rand(10) + 1 }
+  resource { "com.#{Faker::Name.name}.#{Faker::Name.name}" }
 end
 
 ## Catalog blueprints.
@@ -87,4 +89,13 @@ User.blueprint do
   password { 'testing' }
   password_confirmation { 'testing' }
   roles { [ Role.where(:name => 'client').first, Role.make ] }
+end
+
+## Setting blueprints.
+
+Setting.blueprint do
+  resource { Sham.resource }
+  key { Sham.name }
+  value { Sham.value }
+  hidden { false }
 end
