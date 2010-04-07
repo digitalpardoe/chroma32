@@ -46,6 +46,8 @@ def admin_setup
   @document.document = test_image
   @document.save!
   
+  @role = Role.make
+  
   UserSession.create( { :email => "example@example.com", :password => "changeme" } )
 end
 

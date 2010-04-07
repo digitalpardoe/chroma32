@@ -7,4 +7,9 @@ class Admin::UsersControllerTest < ActionController::TestCase
     get :index
     assert_response :success
   end
+  
+  test "show page loads" do
+    get :show, :id => User.all.first.id
+    assert_response :success
+  end
 end
