@@ -3,17 +3,18 @@
 <% form_for(@document, :url => admin_catalog_documents_path, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :document %><br />
-    <%= f.file_field :document %>
-  </div>
-  <div class="field">
-    <%= f.label :public %><br />
-    <%= f.check_box :public %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table>
+    <tr>
+      <td><%= f.label :document %></td>
+      <td><%= f.file_field :document %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :public %></td>
+      <td><%= f.check_box :public %></td>
+    </tr>
+  </table>
+
+  <%= f.submit %>
 <% end %>
 
 <ul class="links">

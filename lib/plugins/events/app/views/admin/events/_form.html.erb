@@ -1,29 +1,30 @@
 <%= f.error_messages %>
 
-<div class="field">
-  <%= f.label :name %><br />
-  <%= f.text_field :name %>
-</div>
-<div class="field">
-  <%= f.label :date %><br />
-  <%= date_select('event', 'date', :order => [:day, :month, :year]) %>
-</div>
-<div class="field">
-  <%= f.label :location %><br />
-  <%= f.text_field :location %>
-</div>
-<div class="field">
-  <%= f.label :description %><br />
-  <%= f.text_area :description %>
-</div>
-<div class="field">
-  <%= f.label :catalog %><br />
-  <%= collection_select :event, :catalog_ids, Catalog.sans_root.order("complex_name ASC").all, :id, :complex_name, {}, :multiple => true, :name => 'event[catalog_ids][]' %>
-</div>
-<div class="field">
-  <%= f.label :role %><br />
-  <%= collection_select :event, :role_ids, Role.visible.all, :id, :name, {}, :multiple => true, :name => 'event[role_ids][]' %>
-</div>
-<div class="actions">
-  <%= f.submit %>
-</div>
+<table>
+  <tr>
+    <td><%= f.label :name %></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :date %></td>
+    <td><%= date_select('event', 'date', :order => [:day, :month, :year]) %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :location %></td>
+    <td><%= f.text_field :location %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :description %></td>
+    <td><%= f.text_area :description %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :catalog %></td>
+    <td><%= collection_select :event, :catalog_ids, Catalog.sans_root.order("complex_name ASC").all, :id, :complex_name, {}, :multiple => true, :name => 'event[catalog_ids][]' %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :role %></td>
+    <td><%= collection_select :event, :role_ids, Role.visible.all, :id, :name, {}, :multiple => true, :name => 'event[role_ids][]' %></td>
+  </tr>
+</table>
+
+<%= f.submit %>

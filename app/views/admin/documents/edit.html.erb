@@ -2,18 +2,19 @@
 
 <% form_for(@document, :url => admin_catalog_document_path) do |f| %>
   <%= f.error_messages %>
+  
+  <table>
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :public %></td>
+      <td><%= f.check_box :public %></td>
+    </tr>
+  </table>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :public %><br />
-    <%= f.check_box :public %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div> 
+  <%= f.submit %>
 <% end %>
 
 <ul class="links">

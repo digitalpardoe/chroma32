@@ -1,21 +1,22 @@
 <%= f.error_messages %>
 
-<div class="field">
-  <%= f.label :title %><br />
-  <%= f.text_field :title %>
-</div>
-<div class="field">
-  <%= f.label :body %><br />
-  <%= f.text_area :body %>
-</div>
-<div class="field">
-  <%= f.label :author %><br />
-  <%= f.text_field :author %>
-</div>
-<div class="field">
-  <%= f.label :document %><br />
-  <%= collection_select :article, :document_id, Document.where(:public => true).where("content_type LIKE 'image%'").all, :id, :name, { :prompt => 'Select Image' } %>
-</div>
-<div class="actions">
-  <%= f.submit %>
-</div>
+<table>
+  <tr>
+    <td><%= f.label :title %></td>
+    <td><%= f.text_field :title %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :body %></td>
+    <td><%= f.text_area :body %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :author %></td>
+    <td><%= f.text_field :author %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :document %></td>
+    <td><%= collection_select :article, :document_id, Document.where(:public => true).where("content_type LIKE 'image%'").all, :id, :name, { :prompt => 'Select Image' } %></td>
+  </tr>
+</table>
+
+<%= f.submit %>
