@@ -1,4 +1,4 @@
-<h1>New document</h1>
+<h2>Upload Document</h2>
 
 <% form_for(@document, :url => admin_catalog_documents_path, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
@@ -16,4 +16,6 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', admin_catalog_path(@catalog) %>
+<ul class="links">
+  <li><%= link_to 'Back', admin_catalog_path(@catalog) %></li>
+</ul>

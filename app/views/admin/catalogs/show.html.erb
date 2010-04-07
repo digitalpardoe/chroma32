@@ -1,4 +1,14 @@
-<h1>Listing catalogs</h1>
+<h2>File Management</h2>
+
+<% if @catalog != Catalog.root %>
+  <h3><%= @catalog.name %></h3>
+  
+  <ul class="links">
+    <li><%= link_to('Up A Level', admin_catalog_path(@catalog.catalog)) %></li>
+  </ul>
+<% end %>
+
+<h3>Catalogs</h3>
 
 <table>
   <tr>
@@ -18,15 +28,16 @@
 <% end %>
 </table>
 
-<h1>Listing documents</h1>
+<ul class="links">
+  <li><%= link_to 'Add Catalog', new_admin_catalog_catalog_path(@catalog) %></li>
+</ul>
+
+<h3>Documents</h3>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Extension</th>
     <th>Size</th>
-    <th>Content type</th>
-    <th>Signature</th>
     <th></th>
     <th></th>
     <th></th>
@@ -34,11 +45,8 @@
 
 <% @catalog.documents.each do |document| %>
   <tr>
-    <td><%= document.name %></td>
-    <td><%= document.extension %></td>
-    <td><%= document.size %></td>
-    <td><%= document.content_type %></td>
-    <td><%= document.signature %></td>
+    <td><%= "#{document.name}.#{document.extension}" %></td>
+    <td><%= number_to_human_size(document.size) %></td>
     <td><%= link_to 'Download', file_path(document) %></td>
     <td><%= link_to 'Show', admin_catalog_document_path(@catalog, document) %></td>
     <td><%= link_to 'Edit', edit_admin_catalog_document_path(@catalog, document) %></td>
@@ -47,10 +55,6 @@
 <% end %>
 </table>
 
-<br />
-
-<% if @catalog.catalog_id %>
-  <%= link_to 'Back', admin_catalog_path(@catalog.catalog) %> | 
-<% end %>
-
-<%= link_to 'New catalog', new_admin_catalog_catalog_path(@catalog) %> | <%= link_to 'New document', new_admin_catalog_document_path(@catalog) %>
+<ul class="links">
+  <li><%= link_to 'Upload Document', new_admin_catalog_document_path(@catalog) %></li>
+</ul>

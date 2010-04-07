@@ -1,3 +1,5 @@
+<h2>Viewing Event</h2>
+
 <p>
   <b>Name:</b>
   <%= @event.name %>
@@ -18,6 +20,7 @@
   <%= @event.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_admin_event_path(@event) %> |
-<%= link_to 'Back', admin_events_path %>
+<ul class="links">
+  <li><%= link_to 'Edit', edit_admin_event_path(@event) %></li>
+  <li><%= link_to 'Back', admin_events_path %></li>
+</ul>

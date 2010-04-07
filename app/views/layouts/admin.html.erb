@@ -15,15 +15,18 @@
   </header>
   
   <nav>
-    <%= link_to "Catalogs", admin_catalogs_path %> |
-    <%= link_to "Roles", admin_roles_path %> | 
-    <%= link_to "Users", admin_users_path %> | 
-    <%= link_to "Settings", admin_settings_path %> | 
-    <%= link_to "Themes", admin_themes_path %> | 
-    <% for link in admin_plugin_links %>
-      <%= link %> | 
-    <% end %>
-    <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+    <ul>
+      <li><%= link_to "File Management", admin_catalogs_path %></li>
+      <li><%= link_to "Roles", admin_roles_path %></li>
+      <li><%= link_to "Users", admin_users_path %></li>
+      <li><%= link_to "Settings", admin_settings_path %></li>
+      <li><%= link_to "Themes", admin_themes_path %></li>
+      <li>Plugins:</li>
+      <% for link in admin_plugin_links %>
+        <li><%= link %></li>
+      <% end %>
+      <li><%= link_to "Logout", user_session_path, :method => :delete %></li>
+    </ul>
   </nav>
   
   <% flash.each do |key, msg| %>

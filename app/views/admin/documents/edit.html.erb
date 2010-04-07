@@ -1,4 +1,4 @@
-<h1>Editing document</h1>
+<h2>Editing Document</h2>
 
 <% form_for(@document, :url => admin_catalog_document_path) do |f| %>
   <%= f.error_messages %>
@@ -13,9 +13,10 @@
   </div>
   <div class="actions">
     <%= f.submit %>
-  </div>
-  
+  </div> 
 <% end %>
 
-<%= link_to 'Show', admin_catalog_document_path(@document) %> |
-<%= link_to 'Back', admin_catalog_path(@document.catalog) %>
+<ul class="links">
+  <li><%= link_to 'Show', admin_catalog_document_path(@document) %></li>
+  <li><%= link_to 'Back', admin_catalog_path(@document.catalog) %></li>
+</ul>

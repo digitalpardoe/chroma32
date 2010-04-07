@@ -1,3 +1,5 @@
+<h2>Viewing Article</h2>
+
 <p>
   <b>Title:</b>
   <%= @article.title %>
@@ -11,6 +13,7 @@
   <%= @article.author %>
 </p>
 
-
-<%= link_to 'Edit', edit_admin_article_path(@article) %> |
-<%= link_to 'Back', admin_articles_path %>
+<ul class="links">
+  <li><%= link_to 'Edit', edit_admin_article_path(@article) %></li>
+  <li><%= link_to 'Back', admin_articles_path %></li>
+</ul>

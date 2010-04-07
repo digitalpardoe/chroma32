@@ -20,18 +20,20 @@
   </header>
   
   <nav>
-    <% for link in user_plugin_links %>
-      <%= link %> | 
-    <% end %>
-    
-    <% if current_user %>
-      <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
-      <% if current_user.role?(:admin) %>
-        | <%= link_to "Admin", admin_root_path %>
+    <ul>
+      <% for link in user_plugin_links %>
+        <li><%= link %></li>
       <% end %>
-    <% else %>
-      <%= link_to "Login", new_user_session_path %>
-    <% end %>
+      
+      <% if current_user %>
+        <li><%= link_to "Logout", user_session_path, :method => :delete %></li>
+        <% if current_user.role?(:admin) %>
+          <li><%= link_to "Admin", admin_root_path %></li>
+        <% end %>
+      <% else %>
+        <li><%= link_to "Login", new_user_session_path %></li>
+      <% end %>
+    </ul>
   </nav>
   
   <% flash.each do |key, msg| %>

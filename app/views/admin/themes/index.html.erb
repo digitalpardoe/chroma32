@@ -1,4 +1,4 @@
-<h1>Listing themes</h1>
+<h2>Themes</h2>
 
 <table>
   <tr>
@@ -14,7 +14,7 @@
     <% form_for :theme, :url => { :action => "update", :id => theme.canonical }, :html => { :method => :put } do |f| %>
       <td><%= theme.name %></td>
       <td><%= textilize(theme.description).html_safe %></td>
-      <td><%= f.submit %></td>
+      <td><%= f.submit "Activate Theme" %></td>
     <% end %>
   </tr>
 <% end %>

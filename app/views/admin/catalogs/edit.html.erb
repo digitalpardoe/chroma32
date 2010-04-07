@@ -1,8 +1,10 @@
-<h1>Editing catalog</h1>
+<h2>Editing Catalog</h2>
 
 <% form_for(@catalog, :url => { :action => 'update' }) do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
 <% end %>
 
-<%= link_to 'Show', admin_catalog_path(@catalog) %> |
-<%= link_to 'Back', admin_catalogs_path %>
+<ul class="links">
+  <li><%= link_to 'Show', admin_catalog_path(@catalog) %></li>
+  <li><%= link_to 'Back', admin_catalogs_path %></li>
+</ul>

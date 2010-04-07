@@ -1,3 +1,5 @@
+<h2>Viewing Document</h2>
+
 <p>
   <b>Name:</b>
   <%= @document.name %>
@@ -18,7 +20,6 @@
   <%= @document.content_type %>
 </p>
 
-
 <p>
   <b>Signature:</b>
   <%= @document.signature %>
@@ -31,6 +32,7 @@
   </p>
 <% end %>
 
-
-<%= link_to 'Edit', edit_admin_catalog_document_path(@document) %> |
-<%= link_to 'Back', admin_catalog_path(@catalog) %>
+<ul class="links">
+  <li><%= link_to 'Edit', edit_admin_catalog_document_path(@document) %></li>
+  <li><%= link_to 'Back', admin_catalog_path(@catalog) %></li>
+</ul>
