@@ -56,8 +56,15 @@ Rspec.configure do |config|
   #
   # For more information take a look at Rspec::Core::Configuration
   
-  config.before(:all)    { Sham.reset(:before_all)  }
-  config.before(:each)   { Sham.reset(:before_each) }
+  config.before(:all) do
+    Sham.reset(:before_all)
+    eval (File.open(File.join(Rails.root, 'db', 'seeds.rb'), "r").read)
+    quietly { Document::DOCUMENT_CACHE = File.join(Rails.root, "tmp", "test_documents") }
+  end
+  
+  config.before(:each) { Sham.reset(:before_each) }
+  
+  config.after(:all) { FileUtils.rm_r(Document::DOCUMENT_CACHE) if File.exists?(Document::DOCUMENT_CACHE) }
 end
 
 # This method has been added to allow warnings to be supressed.

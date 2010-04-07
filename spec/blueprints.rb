@@ -15,12 +15,6 @@ end
 # Catalog creation is a bit more complex than it should be thanks
 # to the possible self-association 'bug'.
 
-Catalog.blueprint(:root) do
-  id { 1 }
-  name { 'root' }
-  catalog_id { nil }
-end
-
 Catalog.blueprint do
   name  { Sham.name }
   catalog_id { 1 }
@@ -29,32 +23,33 @@ end
 ## Document blueprints.
 
 Document.blueprint(:root) do
+  document { nil }
   name { Sham.name }
   size { Sham.size }
   content_type { Sham.content_type }
   signature { MD5.new(name) }
-  catalog { Catalog.make(:root) }
+  catalog_id { Catalog.root.id }
+end
+
+Document.blueprint(:empty) do
+  document { nil }
+  name { nil }
+  size { nil }
+  content_type { nil }
+  signature { nil }
+  catalog_id { Catalog.root.id }
 end
 
 Document.blueprint do
+  document { nil }
   name { Sham.name }
   size { Sham.size }
   content_type { Sham.content_type }
   signature { MD5.new(name) }
-  catalog { Catalog.make }
+  catalog_id { Catalog.make.id }
 end
 
 ## Role blueprints
-
-Role.blueprint(:admin) do
-  name { 'admin' }
-  hidden { true }
-end
-
-Role.blueprint(:client) do
-  name { 'client' }
-  hidden { true }
-end
 
 Role.blueprint do
   name { Sham.name }
@@ -71,19 +66,19 @@ User.blueprint(:admin) do
   email { 'admin@test.com' }
   password { 'testing' }
   password_confirmation { 'testing' }
-  roles { [ Role.make(:admin), Role.make(:client) ] }
+  roles { [ Role.where(:name => 'admin').first, Role.where(:name => 'client').first ] }
 end
 
 User.blueprint(:client) do
   email { 'user@test.com' }
   password { 'testing' }
   password_confirmation { 'testing' }
-  roles { [ Role.make(:client) ] }
+  roles { [ Role.where(:name => 'client').first ] }
 end
 
 User.blueprint do
   email { Sham.email }
   password { 'testing' }
   password_confirmation { 'testing' }
-  roles { [ Role.make(:client), Role.make ] }
+  roles { [ Role.where(:name => 'client').first, Role.make ] }
 end

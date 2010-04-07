@@ -1,11 +1,6 @@
 require 'spec_helper'
 
 describe Catalog do
-  before do
-    @root_catalog = Catalog.new(Catalog.plan(:root))
-    @root_catalog.save(:validate => false)
-  end
-  
   it "should create a new catalog" do
     lambda { Catalog.create(Catalog.plan) }.should change(Catalog, :count).by(1)
   end
@@ -24,7 +19,7 @@ describe Catalog do
   end
   
   it "should not allow deletion of the 'root' catalog" do
-    lambda { @root_catalog.destroy }.should raise_error(ActiveRecord::ActiveRecordError)
+    lambda { Catalog.root.destroy }.should raise_error(ActiveRecord::ActiveRecordError)
   end
   
   it "should cascade delete catalogs" do
