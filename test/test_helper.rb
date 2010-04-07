@@ -51,6 +51,37 @@ def admin_setup
   UserSession.create( { :email => "example@example.com", :password => "changeme" } )
 end
 
+def admin_setup
+  activate_authlogic
+  
+  test_image = TestDocument.new
+  test_image.original_filename = File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec', 'samples', 'jet_trails.jpg'))
+  test_image.content_type = 'image/jpeg'
+  test_image.file_contents = File.open(test_image.original_filename, "r").read
+  
+  @catalog = Catalog.make
+  
+  @document = Document.new(Document.plan(:empty))
+  @document.document = test_image
+  @document.save!
+  
+  @role = Role.make
+  @user = User.make(:client)
+  
+  UserSession.create( { :email => "example@example.com", :password => "changeme" } )
+end
+
+def document_setup
+  test_image = TestDocument.new
+  test_image.original_filename = File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec', 'samples', 'jet_trails.jpg'))
+  test_image.content_type = 'image/jpeg'
+  test_image.file_contents = File.open(test_image.original_filename, "r").read
+  
+  @document = Document.new(Document.plan(:empty))
+  @document.document = test_image
+  @document.save!
+end
+
 def quietly
   v = $VERBOSE
   $VERBOSE = nil
