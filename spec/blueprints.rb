@@ -76,6 +76,12 @@ User.blueprint(:client) do
   roles { [ Role.where(:name => 'client').first ] }
 end
 
+User.blueprint(:sans_role) do
+  email { 'admin@test.com' }
+  password { 'testing' }
+  password_confirmation { 'testing' }
+end
+
 User.blueprint do
   email { Sham.email }
   password { 'testing' }
