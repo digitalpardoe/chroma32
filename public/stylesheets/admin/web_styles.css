@@ -225,6 +225,20 @@ form table tr td.top {
   margin-bottom: 15px;
 }
 
+/* Flashes */
+
+#notice {
+	background-color: #EEEEEE;
+  border: 1px #333 solid;
+  color: #333;
+  padding: 5px;
+	margin-bottom: 20px;
+}
+
+#notice p {
+  margin: 0px;
+}
+
 /* Scaffold */
 
 .fieldWithErrors {

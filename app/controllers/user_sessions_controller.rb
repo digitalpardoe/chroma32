@@ -12,9 +12,9 @@ class UserSessionsController < ApplicationController
       if @user_session.save
         format.html do
           if @user_session.record.role?(:admin)
-            redirect_to(admin_root_path, :notice => 'User Session was successfully created.')
+            redirect_to(admin_root_path, :notice => 'Login successful.')
           else
-            redirect_to(root_path, :notice => 'User Session was successfully created.')
+            redirect_to(root_path, :notice => 'Login successful.')
           end
         end
       else
