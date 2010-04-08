@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :themeify
   
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied."
+    flash[:notice] = "Access denied."
     redirect_to root_path
   end
   

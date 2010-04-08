@@ -247,3 +247,19 @@ body:before {
   color: #FFFFFF;
   text-decoration: underline;
 }
+
+/* Flashes */
+
+#notice {
+	background-color: #EEEEEE;
+  border: 1px #DDDDDD solid;
+  color: #333333;
+  padding: 5px;
+	margin-bottom: 20px;
+}
+
+#notice p {
+  margin: 0px;
+  text-shadow: 1px 1px 3px #666666;
+	filter: dropshadow(color=#666666, offx=1, offy=1);
+}
