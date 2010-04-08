@@ -44,6 +44,10 @@ module Chroma32
     config.after_initialize do
       require 'md5'
       require 'file'
+      
+      Time::DATE_FORMATS[:blog] = "%d/%m/%y @ %H:%M"
+      Time::DATE_FORMATS[:date] = "%d/%m/%y"
+      Time::DATE_FORMATS[:short_blog] = "%d/%m @ %H:%M"
     end
   end
 end

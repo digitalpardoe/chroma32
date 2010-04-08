@@ -1,0 +1,203 @@
+/* HTML Tag Styles */
+
+body {
+	font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.7em;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+table {
+  margin-bottom: 20px;
+}
+
+table tr td {
+  padding: 5px 10px 5px 10px;
+}
+
+table tr th {
+  text-align: left;
+  text-decoration: underline;
+  padding: 5px 10px 5px 10px;
+  background-color: #CCCCCC;
+}
+
+table tr:nth-child(even) {
+  background-color: #FFFFFF;
+}
+
+table tr:nth-child(odd) {
+  background-color: #EEEEEE;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+form input[type="submit"] {
+  margin-top: 20px;
+	background-color: #FFFFFF;
+	color: #333333;
+	border: 2px #999999 solid;
+	border-style: outset;
+}
+
+form input[type="submit"]:active {
+	background-color: #333333;
+	color: #FFFFFF;
+	border: 2px #999999 solid;
+	border-style: inset;
+}
+
+form input[type="text"] {
+  font-size: 1em;
+}
+
+form input[type="password"] {
+  font-size: 1em;
+}
+
+form select {
+  font-size: 1em;
+}
+
+form textarea {
+  font-size: 1em;
+}
+
+label:after {
+  content: ":";
+}
+
+form table {
+  margin: 0px;
+}
+
+form table tr:nth-child(even) {
+  background-color: #FFFFFF;
+}
+
+form table tr:nth-child(odd) {
+  background-color: #FFFFFF;
+}
+
+form table tr td.top {
+	vertical-align: top;
+	line-height: 2em;
+}
+
+/* Component Styles */
+
+#header {
+  height: 5em;
+  line-height: 5em;
+  margin: 0px 20px 0px 20px;
+}
+
+#content {
+  margin: 20px;
+}
+
+/* Navigation Styles */
+
+#nav {
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	background-color: #CCCCCC;
+	color: #666666;
+}
+
+#nav ul {
+	float: left;
+}
+
+#nav li a:link {
+  color: #000000;
+	text-decoration: none;
+	padding: 12px
+}
+
+#nav li a:visited {
+  color: #000000;
+	text-decoration: none;
+	padding: 12px
+}
+
+#nav li a:hover {
+  background-color: #000000;
+  color: #666666;
+	text-decoration: none;
+	border-bottom: none;
+	padding: 12px
+}
+
+#nav li a:active {
+	text-decoration: none;
+	border-bottom: none;
+	padding: 12px
+}
+
+#nav li {
+	list-style-type: none;
+	float: left;
+	border-right: 1px solid #000000;
+}
+
+#nav li.heading {
+  padding: 0px 12px 0px 12px;
+}
+
+/* Other Styles */
+
+.links {
+	height: 20px;
+	line-height: 20px;
+	margin-bottom: 20px;
+}
+
+.links ul {
+	float: left;
+}
+
+.links li {
+	float: left;
+	padding-right: 1em;
+}
+
+.theme {
+  border: 1px solid #000000;
+  float: left;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.theme form {
+  margin: 0px;
+}
+
+.theme form input[type="submit"] {
+  margin: 0px;
+}
+
+.theme .description h1 {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+}

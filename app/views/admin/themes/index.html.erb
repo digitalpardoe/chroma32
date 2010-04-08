@@ -1,21 +1,10 @@
 <h2>Themes</h2>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @themes.each do |theme| %>
-  <tr>
+  <div class="theme">
     <% form_for :theme, :url => { :action => "update", :id => theme.canonical }, :html => { :method => :put } do |f| %>
-      <td><%= theme.name %></td>
-      <td><%= textilize(theme.description).html_safe %></td>
-      <td><%= f.submit "Activate Theme" %></td>
+      <div class="description"><%= textilize(theme.description).html_safe %></div>
+      <%= f.submit "Activate Theme" %>
     <% end %>
-  </tr>
+  </div>
 <% end %>
-</table>

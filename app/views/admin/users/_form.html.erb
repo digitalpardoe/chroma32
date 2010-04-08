@@ -14,7 +14,7 @@
     <td><%= f.password_field :password_confirmation %></td>
   </tr>
   <tr>
-    <td><%= f.label :role %></td>
+    <td class="top"><%= f.label :role %></td>
     <td><%= collection_select :user, :role_ids, Role.visible.all, :id, :name, {}, :multiple => true, :name => 'user[role_ids][]' %></td>
   </tr>
 </table>

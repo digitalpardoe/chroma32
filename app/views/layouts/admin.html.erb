@@ -4,40 +4,41 @@
 <head>
 	<meta charset="utf-8" />
 	<title><%= application_name %> - Admin</title>
-	<%= stylesheet_link_tag :all %>
+	<%= stylesheet_link_tag ["admin/reset", "admin/web_styles"] %>
 	<%= javascript_include_tag :defaults %>
 	<%= csrf_meta_tag %>
 </head>
 
 <body>
-  <header>
+  <div id="header">
     <h1><%= application_name %> - Admin</h1>
-  </header>
+  </div>
   
-  <nav>
+  <div id="nav">
     <ul>
-      <li><%= link_to "File Management", admin_catalogs_path %></li>
+      <li class="heading">Manage &rarr;</li>
+      <li><%= link_to "Files", admin_catalogs_path %></li>
       <li><%= link_to "Roles", admin_roles_path %></li>
       <li><%= link_to "Users", admin_users_path %></li>
       <li><%= link_to "Settings", admin_settings_path %></li>
       <li><%= link_to "Themes", admin_themes_path %></li>
-      <li>Plugins:</li>
+       <li class="heading">Plugins &rarr;</li>
       <% for link in admin_plugin_links %>
         <li><%= link %></li>
       <% end %>
+       <li class="heading">Account &rarr;</li>
+      <li><%= link_to "Details", edit_admin_user_path(current_user) %></li>
       <li><%= link_to "Logout", user_session_path, :method => :delete %></li>
     </ul>
-  </nav>
+  </div>
   
-  <% flash.each do |key, msg| %>
-		<%= content_tag :div, content_tag(:p, msg), :id => key %>
-	<% end %>
+  <div id="content">
+    <% flash.each do |key, msg| %>
+		  <%= content_tag :div, content_tag(:p, msg), :id => key %>
+	  <% end %>
 	
-	<%= yield %>
-	
-	<footer>
-	  <p>&copy; Alex Pardoe, 2010.</p>
-	</footer>
+	  <%= yield %>
+	</div>
 </body>
 
 </html>

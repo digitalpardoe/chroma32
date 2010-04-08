@@ -1,7 +1,7 @@
 <h2>Settings</h2>
 
-<table>
 <% form_for :setting, :url => { :action => "update", :id => @settings.object_id }, :html => { :method => :put } do |f| %>
+<table>
   <% for setting in @settings %>
     <tr>
       <td><%= f.label setting.key, setting.key.humanize %></td>

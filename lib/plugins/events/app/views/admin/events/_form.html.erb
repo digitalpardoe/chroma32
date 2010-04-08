@@ -14,15 +14,15 @@
     <td><%= f.text_field :location %></td>
   </tr>
   <tr>
-    <td><%= f.label :description %></td>
-    <td><%= f.text_area :description %></td>
+    <td class="top"><%= f.label :description %></td>
+    <td><%= f.text_area :description %><br /><br />(No HTML, <a href="/textile-reference/index.html" onclick="window.open(this.href,'textile_reference','height=400,width=600,scrollbars=1');return false;">Textile Markup</a> Only)</td>
   </tr>
   <tr>
-    <td><%= f.label :catalog %></td>
+    <td class="top"><%= f.label :catalog %></td>
     <td><%= collection_select :event, :catalog_ids, Catalog.sans_root.order("complex_name ASC").all, :id, :complex_name, {}, :multiple => true, :name => 'event[catalog_ids][]' %></td>
   </tr>
   <tr>
-    <td><%= f.label :role %></td>
+    <td class="top"><%= f.label :role %></td>
     <td><%= collection_select :event, :role_ids, Role.visible.all, :id, :name, {}, :multiple => true, :name => 'event[role_ids][]' %></td>
   </tr>
 </table>
