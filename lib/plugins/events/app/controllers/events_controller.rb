@@ -8,6 +8,6 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     unauthorized! if cannot? :read, @event
-    @documents = Document.where("catalog_id IN (?)", @event.catalogs).order("created_at ASC")
+    @documents = Document.where("catalog_id IN (?)", @event.catalogs).images.order("created_at ASC")
   end
 end

@@ -1,17 +1,10 @@
-<h1>Listing documents</h1>
+<h2><%= @event.name %></h2>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Thumbnail</th>
-    <th></th>
-  </tr>
+<p><%= link_to "Back To Your Events", events_path %><p>
 
-  <% @documents.each do |document| %>
-    <tr>
-      <td><%= document.name %></td>
-      <td><%= image_tag thumbnail_path(document) %></td>
-      <td><%= link_to 'Download', file_path(document) %></td>
-    </tr>
-  <% end %>
-</table>
+<% @documents.each do |document| %>
+<div id="event_document">
+  <%= image_tag thumbnail_path(document), :size => "100x100" %>
+  <h3><%= document.name %></h3> - <%= number_to_human_size(document.size) %> - <%= link_to 'Download', file_path(document) %>
+</div>
+<% end %>

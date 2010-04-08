@@ -1,0 +1,19 @@
+#events {
+  text-align: center;
+}
+
+#event_document {
+  height: 100px;
+  margin-bottom: 20px;
+  line-height: 100px;
+}
+
+#event_document h3 {
+  margin: 0px;
+  display: inline;
+}
+
+#event_document img {
+  float: left;
+  margin-right: 20px;
+}

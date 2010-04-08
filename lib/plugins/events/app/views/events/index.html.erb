@@ -1,25 +1,8 @@
-<h1>Listing events</h1>
+<h2>Your Events</h2>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Date</th>
-    <th>Location</th>
-    <th>Description</th>
-    <th>Thumbnail</th>
-    <th></th>
-  </tr>
-
+<div id="events">
   <% @events.each do |event| %>
-    <tr>
-      <td><%= event.name %></td>
-      <td><%= event.date %></td>
-      <td><%= event.location %></td>
-      <td><%= event.description %></td>
-      <td><%= image_tag thumbnail_path(event.catalogs.first.documents.first) %></td>
-      <td><%= link_to 'Show', event_path(event) %></td>
-    </tr>
+    <%= image_tag thumbnail_path(event.catalogs.first.documents.images.first) %>
+    <p><%= link_to event.name, event_path(event) %> on <%= event.date.to_s(:date) %></p>
   <% end %>
-</table>
-
-<br />
+</div>

@@ -2,6 +2,8 @@ class Document < ActiveRecord::Base
   validates_presence_of :document, :if => Proc.new { |document| document.signature == nil }
   validates_presence_of :name, :size, :content_type, :signature, :catalog_id, :if => Proc.new { |document| document.document != nil }
   
+  scope :images, where("content_type LIKE 'image%'")
+  
   belongs_to :catalog
     
   before_validation :persist_document, :on => :create
