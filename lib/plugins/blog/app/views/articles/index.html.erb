@@ -3,7 +3,7 @@
 <% @articles.each do |article| %>
   <div id="post">
     <h3><%= link_to(article.title, article_path(article)) %></h3>
-    <%= textilize(truncate(article.body, 250, "...")).html_safe %>
+    <%= textilize(truncate(article.body, :omission => "...", :length => 250)).html_safe %>
     <p><%= link_to("Read More &rarr;".html_safe, article_path(article)) %></p>
   </div>
 <% end %>
