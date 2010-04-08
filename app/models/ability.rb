@@ -18,7 +18,7 @@ class Ability
       
     else
       
-      can :create, UserSession
+      can :manage, UserSession
       
     end
     

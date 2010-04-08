@@ -21,7 +21,7 @@ class Admin::RolesController < AdminController
   def create
     respond_to do |format|
       if @role.save
-        format.html { redirect_to(admin_role_path(@role), :notice => 'Role was successfully created.') }
+        format.html { redirect_to(admin_roles_path, :notice => 'Role was successfully created.') }
       else
         format.html { render :action => "new" }
       end

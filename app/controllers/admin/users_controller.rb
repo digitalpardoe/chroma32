@@ -35,8 +35,17 @@ class Admin::UsersController < AdminController
   end
 
   def update
+    values = params[:user]
+    roles = Array.[](values[:role_ids])
+    
+    @user.roles.each do |role|
+      (roles << role.id) if role.hidden
+    end
+    
+    values[:role_ids] = roles.flatten
+        
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(values)
         format.html { redirect_to(admin_user_path(@user), :notice => 'User was successfully updated.') }
       else
         format.html { render :action => "edit" }
