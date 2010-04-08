@@ -1,11 +1,9 @@
-<h1>Blog</h1>
+<h2>Blog</h2>
 
-<table>
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= link_to(article.title, article_path(article)) %></td>
-      <td><%= article.body %></td>
-      <td><%= article.author %></td>
-    </tr>
-  <% end %>
-</table>
+<% @articles.each do |article| %>
+  <div id="post">
+    <h3><%= link_to(article.title, article_path(article)) %></h3>
+    <%= textilize(truncate(article.body, 250, "...")).html_safe %>
+    <p><%= link_to("Read More &rarr;".html_safe, article_path(article)) %></p>
+  </div>
+<% end %>

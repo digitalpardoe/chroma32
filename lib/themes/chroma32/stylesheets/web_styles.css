@@ -1,0 +1,249 @@
+/* HTML Tag Styles */
+
+body {
+	font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+	background-color: #222222;
+	text-shadow: 1px 1px 3px #000000;
+	filter: dropshadow(color=#000000, offx=1, offy=1);
+	color: #FFFFFF;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.7em;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+a:link {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #999999;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #666666;
+  text-decoration: underline;
+}
+
+/* Component Styles */
+
+#header {
+  height: 5em;
+  line-height: 5em;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0.40, rgb(60,60,60)), color-stop(0.9, rgb(110,110,110)));
+  background: -moz-linear-gradient(center bottom, rgb(60,60,60) 40%, rgb(110,110,110) 90%);
+}
+
+#header h1 {
+  padding-left: 20px;
+}
+
+#header a:link, #header a:visited, #header a:hover, #header a:active {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+#content {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  width: 700px;
+}
+
+#footer {
+  line-height: 3em;
+  text-align: center;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0.40, rgb(60,60,60)), color-stop(0.9, rgb(110,110,110)));
+  background: -moz-linear-gradient(center bottom, rgb(60,60,60) 40%, rgb(110,110,110) 90%);
+}
+
+#shadow {
+  width: 100%;
+  height: 25px;
+  background: #222222 url('/theme/images/shadow.png') repeat-x top left;
+}
+
+/* Navigation Styles */
+
+#nav {
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(0.40, rgb(60,60,60)), color-stop(0.9, rgb(110,110,110)));
+  background: -moz-linear-gradient(center bottom, rgb(60,60,60) 40%, rgb(110,110,110) 90%);
+}
+
+#nav ul {
+	float: left;
+}
+
+#nav li a:link {
+  color: #FFF;
+	text-decoration: none;
+	padding: 12px 20px 12px 20px;
+}
+
+#nav li a:visited {
+  color: #FFF;
+	text-decoration: none;
+	padding: 12px 20px 12px 20px;
+}
+
+#nav li a:hover {
+  color: #FFF;
+	text-decoration: none;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.40, rgb(60,60,60)), color-stop(0.9, rgb(110,110,110)));
+  background: -moz-linear-gradient(center bottom, rgb(110,110,110) 90%, rgb(60,60,60) 40%);
+	padding: 12px 20px 12px 20px;
+}
+
+#nav li a:active {
+  color: #FFF;
+	text-decoration: none;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.40, rgb(40,40,40)), color-stop(0.9, rgb(90,90,90)));
+  background: -moz-linear-gradient(center bottom, rgb(90,90,90) 90%, rgb(40,40,40) 40%);
+	padding: 12px 20px 12px 20px;
+}
+
+#nav li {
+	list-style-type: none;
+	float: left;
+	border-right: 1px solid #FFFFFF;
+}
+
+/* CSS Sticky Footer */
+
+html, body, #wrap {
+  height: 100%;
+}
+
+body > #wrap {
+  height: auto;
+  min-height: 100%;
+}
+
+#main {
+  overflow: auto;
+	padding-bottom: 3em;
+}
+
+#footer {
+  position: relative;
+	margin-top: -3em;
+	height: 3em;
+	clear: both;
+} 
+
+body:before {
+	content: "";
+	height: 100%;
+	float: left;
+	width: 0;
+	margin-top: -32767px;/
+}
+
+/* Login Form */
+
+#login {
+  width: 260px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  background-color: #333333;
+  padding: 50px;
+  -webkit-box-shadow: 0px 5px 10px #000000;
+  -moz-box-shadow: 0px 5px 10px #000000;
+  box-shadow: 0px 5px 10px #000000;
+}
+
+#login form input[type="text"], #login form input[type="password"] {
+  background: #FFFFFF;
+  border: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
+  -webkit-box-shadow: 2px 2px 5px #000000;
+  -moz-box-shadow: 0px 5px 10px #222222;
+  box-shadow: 0px 5px 10px #222222;
+  padding: 5px 5px 5px 5px;
+  width: 250px;
+  font-size: 1.5em;
+}
+
+#login form input {
+  margin-bottom: 20px;
+}
+
+#login form p.error {
+	color: #D57878;
+}
+
+#login form input[type="submit"] {
+  /*background: #4964BC;*/
+  background: -webkit-gradient(linear, 0% 0%, 0% 95%, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.1)));
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+  border: none;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  color: #FFFFFF;
+  text-shadow: #2D3E68 1px 1px 1px;
+  -webkit-box-shadow: 2px 2px 5px #000000;
+  -moz-box-shadow: 0px 5px 10px #222222;
+  box-shadow: 0px 5px 10px #222222;
+  margin: auto;
+  padding: 6px 25px;
+  font-size: 1em;
+  letter-spacing: 1px;
+}
+
+#login form input[type="submit"]:hover {
+  /*background: #344789;*/
+  background: -webkit-gradient(linear, 0% 0%, 0% 95%, from(rgba(255, 255, 255, 0.5)), to(rgba(0, 0, 0, 0.1)));
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.1));
+  cursor: pointer;
+}
+
+/* Other Styles */
+
+#footer p {
+  margin: 0px;
+}
+
+#footer a:link, #footer a:visited, #footer a:hover, #footer a:active {
+  color: #FFFFFF;
+  text-decoration: underline;
+}

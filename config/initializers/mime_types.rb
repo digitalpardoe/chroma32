@@ -19,3 +19,4 @@ end
 # Registering useful MIME types for theming.
 Mime::Type.register 'image/gif', :gif
 Mime::Type.register 'application/x-shockwave-flash', :swf
+Mime::Type.register 'image/png', :png

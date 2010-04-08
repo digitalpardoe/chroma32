@@ -1,1 +1,8 @@
-/* Test Data */
+#post {
+  margin-bottom: 20px;
+  border-bottom: 1px solid;
+}
+
+#view p.image {
+  text-align: center;
+}
