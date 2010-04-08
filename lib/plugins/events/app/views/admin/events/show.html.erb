@@ -1,24 +1,19 @@
 <h2>Viewing Event</h2>
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
+<h3><%= @event.name %></h3>
 
-<p>
-  <b>Date:</b>
-  <%= @event.date %>
-</p>
+<table>
+  <tr>
+    <td><b>Date:</b></td>
+    <td><%= @event.date.to_s(:date) %></td>
+  </tr>
+  <tr>
+    <td><b>Location:</b></td>
+    <td><%= @event.location %></td>
+  </tr>
+</table>
 
-<p>
-  <b>Location:</b>
-  <%= @event.location %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @event.description %>
-</p>
+<%= textilize(@event.description).html_safe %>
 
 <ul class="links">
   <li><%= link_to 'Edit', edit_admin_event_path(@event) %></li>

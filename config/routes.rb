@@ -53,7 +53,7 @@ Chroma32::Application.routes.draw do |map|
     root :to => "admin#index"
         
     resources :users
-    resources :roles
+    resources :roles, :except => [:show]
     resources :themes, :only => [:index, :update]
     resources :settings, :only => [:index, :update]
     

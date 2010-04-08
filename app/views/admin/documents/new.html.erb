@@ -1,5 +1,7 @@
 <h2>Upload Document</h2>
 
+<p>Uploaded file must have a file extension.</p>
+
 <% form_for(@document, :url => admin_catalog_documents_path, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 
@@ -14,7 +16,7 @@
     </tr>
   </table>
 
-  <%= f.submit %>
+  <%= f.submit "Upload Document" %>
 <% end %>
 
 <ul class="links">

@@ -1,16 +1,15 @@
 <h2>Viewing Article</h2>
 
+<h3><%= @article.title %></h3>
+
+<% if @article.document %>
+  <p><%= image_tag thumbnail_path(@article.document) %></p>
+<% end %>
+
+<%= textilize(@article.body).html_safe %>
+
 <p>
-  <b>Title:</b>
-  <%= @article.title %>
-</p>
-<p>
-  <b>Body:</b>
-  <%= @article.body %>
-</p>
-<p>
-  <b>Author:</b>
-  <%= @article.author %>
+  <b>By:</b> <%= @article.author %>
 </p>
 
 <ul class="links">

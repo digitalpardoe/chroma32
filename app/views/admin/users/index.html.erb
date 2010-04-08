@@ -15,7 +15,7 @@
   <tr>
     <td><%= user.email %></td>
     <td><%= user.login_count %></td>
-    <td><%= user.last_login_at %></td>
+    <td><%= user.last_login_at.to_s(:date_time) %></td>
     <td><%= roles(user) %></td>
     <td><%= link_to 'Show', admin_user_path(user) %></td>
     <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>

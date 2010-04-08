@@ -1,69 +1,37 @@
 <h2>Viewing User</h2>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+<h3><%= @user.email %></h3>
 
-<p>
-  <b>Crypted password:</b>
-  <%= @user.crypted_password %>
-</p>
-
-<p>
-  <b>Password salt:</b>
-  <%= @user.password_salt %>
-</p>
-
-<p>
-  <b>Persistence token:</b>
-  <%= @user.persistence_token %>
-</p>
-
-<p>
-  <b>Single access token:</b>
-  <%= @user.single_access_token %>
-</p>
-
-<p>
-  <b>Perishable token:</b>
-  <%= @user.perishable_token %>
-</p>
-
-<p>
-  <b>Login count:</b>
-  <%= @user.login_count %>
-</p>
-
-<p>
-  <b>Failed login count:</b>
-  <%= @user.failed_login_count %>
-</p>
-
-<p>
-  <b>Last request at:</b>
-  <%= @user.last_request_at %>
-</p>
-
-<p>
-  <b>Current login at:</b>
-  <%= @user.current_login_at %>
-</p>
-
-<p>
-  <b>Last login at:</b>
-  <%= @user.last_login_at %>
-</p>
-
-<p>
-  <b>Current login ip:</b>
-  <%= @user.current_login_ip %>
-</p>
-
-<p>
-  <b>Last login ip:</b>
-  <%= @user.last_login_ip %>
-</p>
+<table>
+  <tr>
+    <td><b>Login count:</b></td>
+    <td><%= @user.login_count %></td>
+  </tr>
+  <tr>
+    <td><b>Failed login count:</b></td>
+    <td><%= @user.failed_login_count %></td>
+  </tr>
+  <tr>
+    <td><b>Last request at:</b></td>
+    <td><%= @user.last_request_at.to_s(:date_time) %></td>
+  </tr>
+  <tr>
+    <td><b>Current login at:</b></td>
+    <td><%= @user.current_login_at.to_s(:date_time) %></td>
+  </tr>
+  <tr>
+    <td><b>Last login at:</b></td>
+    <td><%= @user.last_login_at.to_s(:date_time) %></td>
+  </tr>
+  <tr>
+    <td><b>Current login ip:</b></td>
+    <td><%= @user.current_login_ip %></td>
+  </tr>
+  <tr>
+    <td><b>Last login ip:</b></td>
+    <td><%= @user.last_login_ip %></td>
+  </tr>
+</table>
 
 <ul class="links">
   <li><%= link_to 'Edit', edit_admin_user_path(@user) %></li>

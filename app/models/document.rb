@@ -87,7 +87,7 @@ class Document < ActiveRecord::Base
     end
     
     ImageScience.with_image(File.join(DOCUMENT_CACHE, "#{self.signature}")) do |img|
-      img.cropped_thumbnail(100) do |thumb|
+      img.thumbnail(400) do |thumb|
         thumb.save File.join(THUMBNAIL_CACHE, self.signature)
       end
 		end

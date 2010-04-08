@@ -1,35 +1,25 @@
 <h2>Viewing Document</h2>
 
-<p>
-  <b>Name:</b>
-  <%= @document.name %>
-</p>
+<h3><%= @document.name %>.<%= @document.extension %></h3>
 
-<p>
-  <b>Extension:</b>
-  <%= @document.extension %>
-</p>
+<table>
+  <tr>
+    <td><b>Size:</b></td>
+    <td><%= number_to_human_size(@document.size) %></td>
+  </tr>
+  <tr>
+    <td><b>Content type:</b></td>
+    <td><%= @document.content_type %></td>
+  </tr>
+  <tr>
+    <td><b>Signature:</b></td>
+    <td><%= @document.signature %></td>
+  </tr>
+</table>
 
-<p>
-  <b>Size:</b>
-  <%= @document.size %>
-</p>
-
-<p>
-  <b>Content type:</b>
-  <%= @document.content_type %>
-</p>
-
-<p>
-  <b>Signature:</b>
-  <%= @document.signature %>
-</p>
-
-<% if @document.content_type =~ /image/ %>
-  <p>
-    <b>Image data:</b><br />
-    <%= image_tag thumbnail_path(@document), :title => @document.name, :alt => @document.name %>
-  </p>
+<% if @document.image? %>
+  <h4>Preview</h4>
+  <p><%= image_tag thumbnail_path(@document), :title => @document.name, :alt => @document.name %></p>
 <% end %>
 
 <ul class="links">

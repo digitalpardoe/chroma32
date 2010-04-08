@@ -5,7 +5,6 @@
     <th>Name</th>
     <th>Date</th>
     <th>Location</th>
-    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,7 +15,6 @@
     <td><%= event.name %></td>
     <td><%= event.date.to_s(:date) %></td>
     <td><%= event.location %></td>
-    <td><%= event.description %></td>
     <td><%= link_to 'Show', admin_event_path(event) %></td>
     <td><%= link_to 'Edit', edit_admin_event_path(event) %></td>
     <td><%= link_to 'Destroy', admin_event_path(event), :confirm => 'Are you sure?', :method => :delete %></td>

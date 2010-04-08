@@ -9,12 +9,6 @@ class Admin::RolesController < AdminController
     end
   end
 
-  def show
-    respond_to do |format|
-      format.html
-    end
-  end
-
   def new
     respond_to do |format|
       format.html

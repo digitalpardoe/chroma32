@@ -45,9 +45,9 @@ module Chroma32
       require 'md5'
       require 'file'
       
-      Time::DATE_FORMATS[:blog] = "%d/%m/%y @ %H:%M"
+      Time::DATE_FORMATS[:date_time] = "%d/%m/%y @ %H:%M"
       Time::DATE_FORMATS[:date] = "%d/%m/%y"
-      Time::DATE_FORMATS[:short_blog] = "%d/%m @ %H:%M"
+      Time::DATE_FORMATS[:short_date_time] = "%d/%m @ %H:%M"
     end
   end
 end

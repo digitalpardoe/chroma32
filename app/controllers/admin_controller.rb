@@ -4,7 +4,7 @@ class AdminController < ApplicationController
   before_filter :authorize, :except => :download
   
   def index
-    
+    redirect_to admin_catalogs_path
   end
   
   private
