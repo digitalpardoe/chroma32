@@ -14,14 +14,11 @@ class User < ActiveRecord::Base
       super
     end
   end
-  
-  PLUGIN_CONFIG.each_key do |plugin|
-    model_extension = File.join(PLUGINS_DIR, plugin.to_s, 'app', 'models', 'extensions', 'user.rb')
-    eval (File.open(model_extension, "r").read) if File.exists?(model_extension)
-  end
-  
+
   private
   def add_default_role
     self.roles << Role.where(:name => 'client').limit(1).first
   end
+  
+  acts_as_pluggable
 end

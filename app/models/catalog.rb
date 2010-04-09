@@ -35,11 +35,6 @@ class Catalog < ActiveRecord::Base
     end
   end
   
-  PLUGIN_CONFIG.each_key do |plugin|
-    model_extension = File.join(PLUGINS_DIR, plugin.to_s, 'app', 'models', 'extensions', 'catalog.rb')
-    eval (File.open(model_extension, "r").read) if File.exists?(model_extension)
-  end
-  
   private
   def generate_complex_name
     if self.name && self.name != ROOT_NAME
@@ -54,4 +49,6 @@ class Catalog < ActiveRecord::Base
       self.complex_name = complex_name.reverse.join(" - ")
     end
   end
+  
+  acts_as_pluggable
 end

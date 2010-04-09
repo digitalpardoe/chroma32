@@ -34,4 +34,6 @@ class Setting < ActiveRecord::Base
       end
     end
   end
+  
+  acts_as_pluggable
 end

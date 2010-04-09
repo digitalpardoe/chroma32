@@ -44,6 +44,7 @@ module Chroma32
     config.after_initialize do
       require 'md5'
       require 'file'
+      require 'plugins'
       
       Time::DATE_FORMATS[:date_time] = "%d/%m/%y @ %H:%M"
       Time::DATE_FORMATS[:date] = "%d/%m/%y"
