@@ -63,18 +63,19 @@ module ApplicationHelper
   end
   
   def plugin_links(type)
-    links = []
+    links_public = []
+    links_secure = []
     
     PLUGIN_CONFIG.each do |key, value|
       value['links'][type].each do |link|
         if !link['secure']
-          links << link_to(link['label'], eval(link['generator'])).html_safe
+          links_public << link_to(link['label'], eval(link['generator'])).html_safe
         elsif link['secure'] && current_user
-          links << link_to(link['label'], eval(link['generator'])).html_safe
+          links_secure << link_to(link['label'], eval(link['generator'])).html_safe
         end
       end
     end
     
-    links
+    links_public + links_secure
   end
 end

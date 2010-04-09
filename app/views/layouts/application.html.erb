@@ -26,10 +26,10 @@
       <% end %>
       
       <% if current_user %>
-        <li><%= link_to "Logout", user_session_path, :method => :delete %></li>
         <% if current_user.role?(:admin) %>
           <li><%= link_to "Admin", admin_root_path %></li>
         <% end %>
+        <li><%= link_to "Logout", user_session_path, :method => :delete %></li>
       <% else %>
         <li><%= link_to "Login", new_user_session_path %></li>
       <% end %>
