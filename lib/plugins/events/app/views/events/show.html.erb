@@ -1,6 +1,8 @@
-<h2><%= @event.name %></h2>
+<h2><%= @event.name %> - <%= @event.date.to_s(:date) %></h2>
 
 <p><%= link_to "Back To Your Events", events_path %><p>
+  
+<%= textilize(@event.description).html_safe %>
 
 <% @documents.each do |document| %>
 <div id="event_document">
