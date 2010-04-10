@@ -30,7 +30,7 @@ class Document < ActiveRecord::Base
   def persist_document
     return if !document
     
-    # This bit handles the uploading.
+    # Extract the file name and extension
     file = File.name_and_ext(File.basename(document.original_filename))
 
     self.name = file[:name]
@@ -51,11 +51,14 @@ class Document < ActiveRecord::Base
       FileUtils.mkdir_p(DOCUMENT_CACHE)
     end
     
+    # Write the file to disk and generate the signature
     File.open(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), "wb") { |f| f.write(document.read) }
     self.signature = MD5.new(IO.read(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"))).hexdigest
     
+    # Determining the file size
     self.size = File.size(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"))
     
+    # Moving the file to the correct storage location (named by hash)
     File.move(File.join(DOCUMENT_CACHE, "#{self.name}.#{self.extension}"), File.join(DOCUMENT_CACHE, "#{self.signature}"))
   end
   

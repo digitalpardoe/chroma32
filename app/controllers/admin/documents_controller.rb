@@ -1,6 +1,6 @@
 class Admin::DocumentsController < AdminController
   # This before filter prevents CanCan's automatic loading of resources from
-  # breaking the download action, if this isn't here we get an error.
+  # breaking the download action, if this isn't here we get an error
   before_filter :download, :only => :download
   load_and_authorize_resource
   

@@ -15,6 +15,7 @@ class Setting < ActiveRecord::Base
     self.key(key).first.value
   end
   
+  # Internal class to handle marshalling of key-value pairs
   class Composite
     attr_accessor :data
     
@@ -23,9 +24,17 @@ class Setting < ActiveRecord::Base
     end
     
     def save
+      # Iterate through each hash element returned by the form
       @data.each do |key,value|
+        
+        # If the field has been blanked, ignore it, all settings
+        # are there for a reason and cannot be blanked
         if value
+          
+          # Lookup the setting by the key of the hash element
           setting = Setting.application.key(key).first
+          
+          # If the setting is settable store the new setting
           if setting.hidden == false
             setting.value = value 
             setting.save
