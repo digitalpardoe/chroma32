@@ -10,5 +10,5 @@ module Plugins
   end
 end
 
-# Incoroprate my module into ActiveRecord
+# Incorporate my module into ActiveRecord
 ActiveRecord::Base.send(:extend, Plugins::ActiveRecord)
