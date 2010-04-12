@@ -1,28 +1,42 @@
 class Document < ActiveRecord::Base
+  # Make sure the user has uploaded a file if this is obviously not an update
   validates_presence_of :document, :if => Proc.new { |document| document.signature == nil }
+  
+  # Make sure fields are set correctly if this is an update
   validates_presence_of :name, :size, :content_type, :signature, :catalog_id, :if => Proc.new { |document| document.document != nil }
   
+  # Find all documents that are images
   scope :images, where("content_type LIKE 'image%'")
   
   belongs_to :catalog
-    
+  
+  # Before validating the model on create, persist the file to
+  # the filesystem
   before_validation :persist_document, :on => :create
+  
+  # When a model is deleted be sure to clean up the files
+  # in the filesystem
   before_destroy :cleanup_document
   
   attr_accessor :document
   
+  # Storage locations of documents and their thumbnails
   DOCUMENT_CACHE = File.join(Rails.root, "tmp", "documents")
   THUMBNAIL_CACHE = File.join(DOCUMENT_CACHE, "thumbnails")
   
+  
   def file
+    # Return the file path to the document
     File.join(DOCUMENT_CACHE, "#{self.signature}")
   end
-  
+
   def thumbnail
+    # Return the file path to a documents thumbnail
     File.join(THUMBNAIL_CACHE, "#{self.signature}")
   end
   
   def image?
+    # Check if the current document is an image
     self.content_type =~ /image/ ? true : false
   end
 
@@ -76,6 +90,7 @@ class Document < ActiveRecord::Base
   end
   
   def register_mime_type
+    # Check the MIME type doesn't already exist before registering
     if !Mime::Type.lookup_by_extension(self.extension)
       Mime::Type.register self.content_type, self.extension
     end
@@ -86,6 +101,7 @@ class Document < ActiveRecord::Base
       FileUtils.mkdir_p(THUMBNAIL_CACHE)
     end
     
+    # Use ImageScience to create a thumbnail
     ImageScience.with_image(File.join(DOCUMENT_CACHE, "#{self.signature}")) do |img|
       img.thumbnail(400) do |thumb|
         thumb.save File.join(THUMBNAIL_CACHE, self.signature)
@@ -94,6 +110,8 @@ class Document < ActiveRecord::Base
   end
   
   def cleanup_document
+    # Delete the document from the filesystem if it exists nowhere
+    # else in the database
     if Document.where(:signature => self.signature).count(:id) <= 1
       File.delete(File.join(DOCUMENT_CACHE, "#{self.signature}"))
       
@@ -103,5 +121,6 @@ class Document < ActiveRecord::Base
     end
   end
   
+  # Load model extensions from plugins
   acts_as_pluggable
 end

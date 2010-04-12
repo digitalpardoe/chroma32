@@ -1,43 +1,57 @@
 module ApplicationHelper
+  # Builds theme appropriate stylesheet link tags
   def themed_stylesheet_link_tag(args)
     result = stylesheet_link_tag(args)
     result << build_themed_resource_tags("stylesheets").html_safe
   end
   
+  # Builds theme appropriate JavaScript link tags
   def themed_javascript_include_tag(args)
     result = javascript_include_tag(args)
     result << build_themed_resource_tags("javascripts").html_safe
   end
   
+  # Builds plugin appropriate stylesheet link tags
   def plugin_stylesheet_link_tag
     build_plugin_resource_tags("stylesheets").html_safe
   end
   
+  # Builds plugin appropriate JavaScript link tags
   def plugin_javascript_include_tag
     build_plugin_resource_tags("javascripts").html_safe
   end
-  
+
+  # Returns the application name from the application settings
   def application_name
     Setting.application.value("name")
   end
   
+  # Builds the file path (URL) of a document object
   def file_path(document)
     document_path(document, 'file')
   end
   
+  # Builds the thumbnail path (URL) of a document object
   def thumbnail_path(document)
     document_path(document, 'thumbnail')
   end
   
+  # Generate user links for plugins
   def user_plugin_links
     plugin_links('user')
   end
   
+  # Generate admin links for plugins
   def admin_plugin_links
     plugin_links('admin')
   end
   
   private
+  
+  # All the methods below are the actual implementations for the
+  # methods above, the separation is present to prevent massive
+  # amounts of code duplication
+  
   def build_themed_resource_tags(resource)
     result = ""
     File.nested("#{THEMES_DIR}/#{Setting.application.value("theme")}/#{resource}").each do |file|

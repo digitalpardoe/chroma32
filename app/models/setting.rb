@@ -3,6 +3,8 @@ class Setting < ActiveRecord::Base
   validates_uniqueness_of :key, :scope => [:resource]
   
   scope :resource, lambda { |resource| where("settings.resource = ?", resource) }
+  
+  # Find all application settings
   scope :application, resource(RESOURCE_ID)
   scope :key, lambda { |key| where("settings.key = ?", key) }
   scope :visible, where(:hidden => false)
@@ -12,6 +14,7 @@ class Setting < ActiveRecord::Base
   attr_readonly :hidden
   
   def self.value(key)
+    # Return the value of a key
     self.key(key).first.value
   end
   
@@ -44,5 +47,6 @@ class Setting < ActiveRecord::Base
     end
   end
   
+  # Load model extensions from plugins
   acts_as_pluggable
 end

@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+  # CanCan convenience method
   load_and_authorize_resource
 
   def new
@@ -11,6 +12,8 @@ class UserSessionsController < ApplicationController
     respond_to do |format|
       if @user_session.save
         format.html do
+          # If the user is an admin redirect to the administrative
+          # area, otherwise redirect to the website homepage
           if @user_session.record.role?(:admin)
             redirect_to(admin_root_path, :notice => 'Login successful.')
           else

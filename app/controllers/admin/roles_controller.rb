@@ -1,4 +1,5 @@
 class Admin::RolesController < AdminController
+  # CanCan convenience method
   load_and_authorize_resource
   
   def index

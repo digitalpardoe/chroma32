@@ -10,5 +10,6 @@ class Role < ActiveRecord::Base
   attr_protected :hidden
   attr_readonly :hidden
   
+  # Load model extensions from plugins
   acts_as_pluggable
 end

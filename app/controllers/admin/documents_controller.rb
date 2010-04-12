@@ -2,6 +2,8 @@ class Admin::DocumentsController < AdminController
   # This before filter prevents CanCan's automatic loading of resources from
   # breaking the download action, if this isn't here we get an error
   before_filter :download, :only => :download
+  
+  # CanCan convenience method
   load_and_authorize_resource
   
   def show
@@ -55,9 +57,13 @@ class Admin::DocumentsController < AdminController
   end
   
   def download
+    # Find the document being requested
     @document = Document.where(:name => params[:id], :extension => params[:format], :catalog_id => params[:catalog_id]).limit(1).first
+    
+    # Check the user's permission to view it using CanCan
     unauthorized! if ((cannot? :read, @document) && !@document.public)
     
+    # Stream the binary data to the user's browser
     send_file eval("@document.#{params[:type]}"), :type => @document.content_type, :disposition => "attachment", :filename => "#{params[:id]}.#{params[:format]}", :stream => false
   end
 end

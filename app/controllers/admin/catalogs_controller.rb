@@ -1,7 +1,10 @@
 class Admin::CatalogsController < AdminController
+  # CanCan convenience method
   load_and_authorize_resource
   
   def index
+    # The index page will in fact be the 'show' page for
+    # the root catalog
     @catalog = Catalog.find(Catalog.root.id)
     
     respond_to do |format|

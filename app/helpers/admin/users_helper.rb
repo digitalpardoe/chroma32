@@ -1,4 +1,6 @@
 module Admin::UsersHelper
+  # Creates a comma separated list of all a user's
+  # currently assigned roles
   def roles(user)
     separator = ", "
     
