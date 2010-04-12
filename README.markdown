@@ -24,8 +24,18 @@ application can be installed, automatically or manually;
 - Rake 0.8.x or higher (RubyGem).
 - Bundler 0.9.16 or greater (RubyGem).
 - The '_freeimage_' libraries (for the '_image\_science_' RubyGem).
+- SQLite libraries (for the '_sqlite3-ruby_' RubyGem).
 
 ### Installation
+
+#### Automated Installation
+
+From with the application directory (defaults to an SQLite3
+databse);
+
+- Run '_ruby setup.rb_'.
+
+#### Manual Installation
 
 From within the application directory;
 
@@ -38,7 +48,6 @@ containing '_gem \"mysql\"_'.
 - Copy '_config/database.example.yml_' to '_config/database.yml_'.
 - Customise the configuration in this file to suit your needs.
 - Create the directory '_tmp/pids_'.
-- Create the directory '_tmp/documents_'.
 - Run '_rake db:migrate_'.
 - Run '_rake db:seed_'.
 
