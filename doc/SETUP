@@ -1,9 +1,0 @@
-cp ./config/database.example.yml ./config/database.yml
-
-## Customise 'database.yml'
-
-rake db:migrate
-rake db:seed
-
-mkdir -p ./tmp/pids
-mkdir -p ./tmp/documents

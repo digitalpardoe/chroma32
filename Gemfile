@@ -12,8 +12,8 @@ gem "mysql"
 ## Bundle the gems you use:
 gem "cancan"
 gem "RedCloth"
-gem "image_science"
 gem "RubyInline"
+gem "image_science"
 
 ## Bundle testing gems:
 gem "rspec-rails", "2.0.0.beta.3"
