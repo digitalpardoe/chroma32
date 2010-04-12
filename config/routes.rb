@@ -5,6 +5,9 @@ Chroma32::Application.routes.draw do |map|
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
+  
+  # Routes to allow the user's browser to download file such as theme and
+  # plugins resources and the documents uploaded to the application
   match "theme/:resource/:filename(.:format)" => "admin/themes#show", :as => :theme_resource
   match "plugin/:name/:resource/:filename(.:format)" => "admin/plugins#show", :as => :plugin_resource
   match "download/:catalog_id/:type/:id(.:format)" => "admin/documents#download", :type => /file|thumbnail/, :as => :file_download
@@ -57,6 +60,8 @@ Chroma32::Application.routes.draw do |map|
     resources :themes, :only => [:index, :update]
     resources :settings, :only => [:index, :update]
     
+    # Nested resources to allow catalogs to exist inside catalogs and
+    # documents to exist inside catalogs
     resources :catalogs, :only => [:index, :show, :edit, :update, :destroy] do
       resources :documents, :except => [:index]
       resource :catalog, :only => [:create, :new]
@@ -66,6 +71,9 @@ Chroma32::Application.routes.draw do |map|
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
+  
+  # Set the root of the application if it set up in the database,
+  # in the event it is not, set it to a known default
   begin
     root :to => Setting.application.value("root")
   rescue

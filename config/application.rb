@@ -46,6 +46,7 @@ module Chroma32
       require 'file'
       require 'plugins'
       
+      # Set time formats here so they can be used in 'to_s' methods
       Time::DATE_FORMATS[:date_time] = "%d/%m/%y @ %H:%M"
       Time::DATE_FORMATS[:date] = "%d/%m/%y"
       Time::DATE_FORMATS[:short_date_time] = "%d/%m @ %H:%M"
