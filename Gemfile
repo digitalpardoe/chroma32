@@ -10,7 +10,7 @@ gem "sqlite3-ruby", :require => "sqlite3"
 gem "mysql"
 
 ## Bundle the gems you use:
-gem "cancan"
+gem "cancan", "1.0.2"
 gem "RedCloth"
 gem "RubyInline"
 gem "image_science"
