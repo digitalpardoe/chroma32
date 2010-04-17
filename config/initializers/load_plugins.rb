@@ -1,4 +1,4 @@
-# Limit this 'require' to when the application is initialsed from the 'rails' command
+# Limit this 'require' to when the application is initialised from the 'rails' command
 Dir["#{PLUGINS_DIR}/**/generators/*.rb"].each {|f| require f} if File.basename( $0 ) == "rails"
 
 plugin_config = {}
