@@ -44,9 +44,11 @@ class Setting < ActiveRecord::Base
           end
         end
       end
+      
+      # This will cause application servers such as Passenger
+      # to reload the application, applying settings that require
+      # an application restart
+      FileUtils.touch(File.join("#{Rails.root}", "tmp", "restart.txt"))
     end
   end
-  
-  # Load model extensions from plugins
-  acts_as_pluggable
 end
