@@ -3,6 +3,6 @@
 <div id="events">
   <% @events.each do |event| %>
     <%= image_tag thumbnail_path(event.catalogs.first.documents.images.first) %>
-    <p><%= link_to event.name, event_path(event) %> on <%= event.date.to_s(:date) %> at <%= event.location %></p>
+    <p><%= link_to event.name, event_path(event) %> on <%= event.date.to_s(:date) %> in <%= event.location %></p>
   <% end %>
 </div>
