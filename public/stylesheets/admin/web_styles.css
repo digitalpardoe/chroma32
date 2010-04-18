@@ -43,6 +43,15 @@ a:active {
   color: #999999;
 }
 
+ul {
+  margin-bottom: 15px;
+}
+
+li {
+	list-style-type: circle;
+	margin-left: 25px;
+}
+
 p {
   margin-bottom: 15px;
 }
@@ -149,6 +158,7 @@ form table tr td.top {
 
 #nav ul {
 	float: left;
+	margin: 0px;
 }
 
 #nav li a:link {
@@ -182,6 +192,7 @@ form table tr td.top {
 	list-style-type: none;
 	float: left;
 	border-right: 1px solid #000000;
+	margin: 0px;
 }
 
 #nav li.heading {
@@ -198,11 +209,14 @@ form table tr td.top {
 
 .links ul {
 	float: left;
+	margin: 0px;
 }
 
 .links li {
 	float: left;
 	padding-right: 1em;
+	list-style-type: none;
+	margin: 0px;
 }
 
 .theme {

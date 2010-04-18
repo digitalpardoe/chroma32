@@ -53,6 +53,15 @@ a:active {
   text-decoration: underline;
 }
 
+ul {
+  margin-bottom: 15px;
+}
+
+li {
+	list-style-type: circle;
+	margin-left: 25px;
+}
+
 /* Component Styles */
 
 #header {
@@ -103,6 +112,7 @@ a:active {
 
 #nav ul {
 	float: left;
+	margin-bottom: 0px;
 }
 
 #nav li a:link {
@@ -137,6 +147,7 @@ a:active {
 	list-style-type: none;
 	float: left;
 	border-right: 1px solid #FFFFFF;
+	margin: 0px;
 }
 
 /* CSS Sticky Footer */
