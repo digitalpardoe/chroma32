@@ -32,7 +32,7 @@ class Admin::RolesController < AdminController
   def update
     respond_to do |format|
       if @role.update_attributes(params[:role])
-        format.html { redirect_to(admin_role_path(@role), :notice => 'Role was successfully updated.') }
+        format.html { redirect_to(admin_roles_path, :notice => 'Role was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end
