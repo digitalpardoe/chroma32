@@ -44,12 +44,12 @@ a:visited {
 }
 
 a:hover {
-  color: #999999;
+  color: #9EC8FF;
   text-decoration: underline;
 }
 
 a:active {
-  color: #666666;
+  color: #9EC8FF;
   text-decoration: underline;
 }
 
