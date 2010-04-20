@@ -1,6 +1,6 @@
-h1. Chroma32
+h1. Blueprint
 
-This is the default theme for Chroma32.
+Clean & simple blue-based theme.
 
 More information;
 "http://chroma32.com/":http://chroma32.com/

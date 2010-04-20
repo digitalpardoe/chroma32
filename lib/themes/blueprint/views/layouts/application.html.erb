@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title><%= application_name %></title>
+	
+	<%= plugin_stylesheet_link_tag %>
+	<%= themed_stylesheet_link_tag :all %>
+	
+	<%= plugin_javascript_include_tag %>
+	<%= themed_javascript_include_tag :defaults %>
+	
+	<%= csrf_meta_tag %>
+	
+	<!--[if  IE 8]>
+    <style type="text/css">
+      #wrap { display: table; }
+    </style>
+  <![endif]-->
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <h1><%= link_to application_name, root_url %></h1>
+    </div>
+  
+    <div id="nav">
+      <ul>
+        <% for link in user_plugin_links %>
+          <li><%= link %></li>
+        <% end %>
+      
+        <% if current_user %>
+          <% if current_user.role?(:admin) %>
+            <li><%= link_to "Admin", admin_root_path %></li>
+          <% end %>
+          <li><%= link_to "Logout", user_session_path, :method => :delete %></li>
+        <% else %>
+          <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+    
+    <div id="shadow"> </div>
+  
+    <div id="content">
+      <% flash.each do |key, msg| %>
+		    <%= content_tag :div, content_tag(:p, msg), :id => key %>
+	    <% end %>
+	
+	    <%= yield %>
+	  </div>
+  </div>
+</body>
+
+</html>

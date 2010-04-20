@@ -1,0 +1,11 @@
+<% form_for(@user_session, :url => user_session_path) do |f| %>
+  <% if !@user_session.errors.empty? %>
+    <p class="error">Login Unsuccessful</p>
+  <% end %>
+
+  <%= f.text_field :email, :placeholder => "Email Address" %><br />
+  <%= f.password_field :password, :placeholder => "Password" %><br />
+  <%= f.check_box :remember_me %> Remember Me<br />
+
+  <%= f.submit "Login" %>
+<% end %>
