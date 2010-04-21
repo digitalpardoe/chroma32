@@ -57,7 +57,7 @@ containing '_gem \"mysql\"_'.
 After completing the installation steps you should be able to
 the application by running the command '_rails server_'.
 
-In your web browser you can then navigate to '_http://localhost:3000/_',
+In your web browser you can then navigate to [http://localhost:3000/](http://localhost:3000/),
 the default email address for logging in is '_example@example.com_'
 and the default password is '_changeme_'. You can change both of these
 in the administrative control panel.
