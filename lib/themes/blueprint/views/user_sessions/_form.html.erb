@@ -9,3 +9,10 @@
 
   <%= f.submit "Login" %>
 <% end %>
+
+<script type="text/javascript">
+  window.onload = function(){
+    inputPlaceholder( document.getElementById('user_session_email') );
+    inputPlaceholder( document.getElementById('user_session_password') );
+  }
+</script>

@@ -56,7 +56,8 @@ module ApplicationHelper
     result = ""
     File.nested("#{THEMES_DIR}/#{Setting.application.value("theme")}/#{resource}").each do |file|
       file = File.name_and_ext(file)
-      result << stylesheet_link_tag(theme_resource_path("#{resource}", file[:name], file[:extension]))
+      if resource == "stylesheets" then result << stylesheet_link_tag(theme_resource_path("#{resource}", file[:name], file[:extension])) end
+      if resource == "javascripts" then result << javascript_include_tag(theme_resource_path("#{resource}", file[:name], file[:extension])) end
     end
     result
   end
@@ -66,7 +67,8 @@ module ApplicationHelper
     PLUGIN_CONFIG.each_key do |key|
       File.nested("#{PLUGINS_DIR}/#{key}/public/#{resource}").each do |file|
         file = File.name_and_ext(file)
-        result << stylesheet_link_tag(plugin_resource_path(key, "#{resource}", file[:name], file[:extension]))
+        if resource == "stylesheets" then result << stylesheet_link_tag(theme_resource_path("#{resource}", file[:name], file[:extension])) end
+        if resource == "javascripts" then result << javascript_include_tag(theme_resource_path("#{resource}", file[:name], file[:extension])) end
       end
     end
     result
