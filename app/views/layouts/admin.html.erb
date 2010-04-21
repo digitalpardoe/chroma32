@@ -21,12 +21,13 @@
       <li><%= link_to "Roles", admin_roles_path %></li>
       <li><%= link_to "Users", admin_users_path %></li>
       <li><%= link_to "Settings", admin_settings_path %></li>
+      <li><%= link_to "Plugins", admin_plugins_path %></li>
       <li><%= link_to "Themes", admin_themes_path %></li>
-       <li class="heading">Plugins &rarr;</li>
+      <li class="heading">Plugins &rarr;</li>
       <% for link in admin_plugin_links %>
         <li><%= link %></li>
       <% end %>
-       <li class="heading">Account &rarr;</li>
+      <li class="heading">Account &rarr;</li>
       <li><%= link_to "Details", edit_admin_user_path(current_user) %></li>
       <li><%= link_to "Logout", user_session_path, :method => :delete %></li>
     </ul>

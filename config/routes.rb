@@ -58,6 +58,7 @@ Chroma32::Application.routes.draw do |map|
     resources :users
     resources :roles, :except => [:show]
     resources :themes, :only => [:index, :update]
+    resources :plugins, :only => [:index,:update,:destroy]
     resources :settings, :only => [:index, :update]
     
     # Nested resources to allow catalogs to exist inside catalogs and

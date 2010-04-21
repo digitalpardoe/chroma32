@@ -239,6 +239,26 @@ form table tr td.top {
   margin-bottom: 15px;
 }
 
+.plugin {
+  border: 1px solid #000000;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 150px;
+}
+
+.plugin form {
+  margin: 0px;
+}
+
+.plugin form input[type="submit"] {
+  margin: 0px;
+}
+
+.plugin .description h1 {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+}
+
 /* Flashes */
 
 #notice {

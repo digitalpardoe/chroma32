@@ -1,0 +1,19 @@
+<h2>Active Plugins</h2>
+<% @actives.each do |key,value| %>
+  <div class="plugin">
+    <% form_for :plugin, :url => { :action => "destroy", :id => key.to_s }, :html => { :method => :delete } do |f| %>
+      <div class="description"><h1><%=  value["plugin"]["name"] %></h1></div>
+      <%= f.submit "Disable Plugin" %>
+    <% end %>
+  </div>
+<% end %>
+
+<h2>Inactive Plugins</h2>
+<% @inactives.each do |key,value| %>
+  <div class="plugin">
+    <% form_for :plugin, :url => { :action => "update", :id => key.to_s }, :html => { :method => :put } do |f| %>
+      <div class="description"><h1><%=  value["plugin"]["name"] %></h1></div>
+      <%= f.submit "Enable Plugin" %>
+    <% end %>
+  </div>
+<% end %>
