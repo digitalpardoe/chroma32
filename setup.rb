@@ -10,7 +10,7 @@ unless system("bundle install")
 end
 
 # Create the required directories
-FileUtils.mkdir_p(File.join("tmp" ,"pids"))
+system("rake tmp:create")
 
 # Database configuration for SQLite3
 db_config = ""

@@ -47,7 +47,7 @@ containing '_gem \"mysql\"_'.
 
 - Copy '_config/database.example.yml_' to '_config/database.yml_'.
 - Customise the configuration in this file to suit your needs.
-- Create the directory '_tmp/pids_'.
+- Run '_rake tmp:create_'.
 - Run '_rake db:migrate_'.
 - Run '_rake db:seed_'.
 
