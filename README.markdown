@@ -35,8 +35,8 @@ application can be installed, automatically or manually;
 - RubyGems 1.3.6 or greater.
 - Rake 0.8.x or higher (RubyGem).
 - Bundler 0.9.16 or greater (RubyGem).
-- The '_freeimage_' libraries (for the '_image\_science_' RubyGem).
-- SQLite libraries (for the '_sqlite3-ruby_' RubyGem).
+- The _freeimage_ libraries (for the _image\_science_ RubyGem).
+- SQLite libraries (for the _sqlite3-ruby_ RubyGem).
 
 ### Installation
 
@@ -45,31 +45,31 @@ application can be installed, automatically or manually;
 From with the application directory (defaults to an SQLite3
 databse);
 
-- Run '_ruby setup.rb_'.
+- Run `ruby setup.rb`.
 
 #### Manual Installation
 
 From within the application directory;
 
-- Run '_bundle install_'.
+- Run `bundle install`.
 
 If the above step fails due to an error installing the MySQL gem
-you will need to edit '_Gemfile_' and comment or remove the line
-containing '_gem \"mysql\"_'.
+you will need to edit _Gemfile_ and comment or remove the line
+containing `gem "mysql"`.
 
-- Copy '_config/database.example.yml_' to '_config/database.yml_'.
+- Copy _config/database.example.yml_ to _config/database.yml_.
 - Customise the configuration in this file to suit your needs.
-- Run '_rake tmp:create_'.
-- Run '_rake db:migrate_'.
-- Run '_rake db:seed_'.
+- Run `rake tmp:create`.
+- Run `rake db:migrate`.
+- Run `rake db:seed`.
 
 
 ### Running The Application
 
 After completing the installation steps you should be able to
-the application by running the command '_rails server_'.
+the application by running the command `rails server`.
 
 In your web browser you can then navigate to [http://localhost:3000/](http://localhost:3000/),
-the default email address for logging in is '_example@example.com_'
-and the default password is '_changeme_'. You can change both of these
+the default email address for logging in is _example@example.com_
+and the default password is _changeme_. You can change both of these
 in the administrative control panel.
