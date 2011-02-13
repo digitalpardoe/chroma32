@@ -4,8 +4,8 @@ Chroma32
 Introduction
 ------------
 
-Chroma32, the photographic asset management system built atop of
-the CoreDM document management framework. This system in it's
+Chroma32, the photographic asset management system built on a
+custom document management framework. This system in it's
 current guise provides a basic web application through which
 digital images can be easily distributed to friends, family &
 event clients. With full support or user authentication,
@@ -13,6 +13,18 @@ authorisation and event management.
 
 Setup Instructions
 ------------------
+
+### Post-Commit
+
+Once you've checked out the app you'll need to run:
+
+    git submodule init
+    
+And:
+
+    git submodule update
+    
+To ensure you have the required libraries.
 
 ### Requirements
 
