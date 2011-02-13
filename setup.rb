@@ -9,6 +9,16 @@ unless system("bundle install")
   exit
 end
 
+unless system("git submodule init")
+  puts "Problem with 'git submodule init'."
+  exit
+end
+
+unless system("git submodule update")
+  puts "Problem with 'git submodule update'."
+  exit
+end
+
 # Create the required directories
 system("rake tmp:create")
 
