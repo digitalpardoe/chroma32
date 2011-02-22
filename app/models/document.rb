@@ -79,13 +79,9 @@ class Document < ActiveRecord::Base
   def check_duplicate_names
     count = 1
     name = self.name
-    while (true)
-      if Document.where(:name => self.name, :catalog_id => self.catalog_id).count(:id) == 1
-        self.name = "#{name}-#{count}"
-        count += 1
-      else
-        break
-      end
+    while (Document.where(:name => self.name, :catalog_id => self.catalog_id).count(:id) == 1)
+      self.name = "#{name}-#{count}"
+      count += 1
     end
   end
   
